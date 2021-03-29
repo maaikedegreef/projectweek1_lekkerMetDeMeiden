@@ -1,4 +1,4 @@
-module projectweek1.lekkerMetDeMeiden {
+module projectweek.lekkerMetDeMeiden {
     requires javafx.graphics;
     requires javafx.controls;
     requires javafx.fxml;
