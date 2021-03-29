@@ -38,7 +38,6 @@ public class Cirkel {
         }
         return result;
     }
-
     @Override
     public String toString() {
         return "Cirkel: middelpunt: (" + middelPunt.getX() + ", " + middelPunt.getY() + ") - straal: " + radius ;
