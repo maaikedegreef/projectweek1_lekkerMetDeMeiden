@@ -33,21 +33,13 @@ public class RechthoekApp {
         root.add(invoerBreedteLabel , 0 ,0);
         root.add(invoerBreedte , 1 ,0);
 
-        root.add(invoerHoogteLabel , 0 ,1);
-        root.add(invoerHoogte , 1 ,1);
-
-        root.add(invoerLinkerBovenhoekXLabel , 0 ,2);
-        root.add(invoerLinkerXBovenhoek , 1 ,2);
-
-        root.add(invoerLinkerBovenhoekYLabel , 0 ,3);
-        root.add(invoerLinkerYBovenhoek , 1 ,3);
 
         invoerBreedte.setOnAction(eventIngaveBreedte ->{
             /* de tekst halen en een integer maken */
             try{
                 Integer.parseInt(invoerBreedte.getText());
-                root.add(invoerBreedteLabel , 0 ,0);
-                root.add(invoerBreedte , 1 ,0);
+                root.add(invoerHoogteLabel , 0 ,1);
+                root.add(invoerHoogte , 1 ,1);
             }catch (NumberFormatException e){
 
                 invoerBreedte.clear();
@@ -62,8 +54,8 @@ public class RechthoekApp {
             /* de tekst halen en een integer maken */
             try{
                 Integer.parseInt(invoerHoogte.getText());
-                root.add(invoerHoogteLabel , 0 ,0);
-                root.add(invoerHoogte , 1 ,0);
+                root.add(invoerLinkerBovenhoekXLabel , 0 ,2);
+                root.add(invoerLinkerXBovenhoek , 1 ,2);
             }catch (NumberFormatException e){
 
                 invoerHoogte.clear();
@@ -77,8 +69,8 @@ public class RechthoekApp {
             /* de tekst halen en een integer maken */
             try{
                 Integer.parseInt(invoerLinkerXBovenhoek.getText());
-                root.add(invoerLinkerBovenhoekXLabel , 0 ,0);
-                root.add(invoerLinkerXBovenhoek , 1 ,0);
+                root.add(invoerLinkerBovenhoekYLabel , 0 ,3);
+                root.add(invoerLinkerYBovenhoek , 1 ,3);
             }catch (NumberFormatException e){
 
                 invoerLinkerXBovenhoek.clear();
