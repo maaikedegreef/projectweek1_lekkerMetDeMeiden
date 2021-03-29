@@ -1,14 +1,34 @@
 package domain;
 
 public class Punt {
-    public Punt(int xCoordinaat, int yCoordinaat) {
+
+    private int x;
+    private int y;
+
+    public Punt(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
     public int getX() {
-        return 0;
+        return x;
     }
 
     public int getY() {
-        return 0;
+        return y;
+    }
+    @Override
+    public boolean equals(Object object){
+        if(object instanceof Punt){
+            if(((Punt) object).getX() == this.getX() && ((Punt) object).getY() == this.getY()) return true;
+        }
+        return false;
+    }
+    @Override
+    public String toString() {
+        return "Punt{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
     }
 }

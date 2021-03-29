@@ -5,7 +5,7 @@ public class Cirkel {
     private int radius;
 
     public Cirkel(Punt middelPunt, int radius){
-        setMiddelpunt(Punt);
+        setMiddelpunt(middelPunt);
         setRadius(radius);
     }
 
@@ -41,6 +41,7 @@ public class Cirkel {
 
     @Override
     public String toString() {
-        return "Cirkel: middelpunt: (" + middelPunt.getX() + ", " + middelPunt.getY + ") - straal: " + radius ;
+        return "Cirkel: middelpunt: (" + middelPunt.getX() + ", " + middelPunt.getY() + ") - straal: " + radius ;
     }
 }
+
