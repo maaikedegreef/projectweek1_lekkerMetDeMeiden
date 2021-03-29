@@ -15,8 +15,6 @@ public class CirkelApp {
     private TextField invoerX, invoerY, invoerStraal;
     private Alert foutenboodschap = new Alert(Alert.AlertType.WARNING);
 
-
-
     private Punt middelpunt;
     private Cirkel cirkel;
 

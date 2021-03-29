@@ -12,7 +12,7 @@ public class FiguurApp {
     private ObservableList<String> mogelijkeFiguren;
 
     public FiguurApp(GridPane root) {
-        mogelijkeFiguren = FXCollections.observableArrayList("Cirkel","Rechthoek");
+        mogelijkeFiguren = FXCollections.observableArrayList("Lijnstuk", "Cirkel", "Rechthoek");
         keuzeMenu = new ComboBox(mogelijkeFiguren);
         root.add(keuzeMenu,0,0);
         keuzeMenu.setOnAction(eventKeuze -> {
@@ -20,11 +20,10 @@ public class FiguurApp {
 
             if (keuzeMenu.getValue()!=null){
 
-                if (keuzeMenu.getValue().equals("Rechthoek")) {
-                    new RechthoekApp(root);
-                }
-                if (keuzeMenu.getValue().equals("Cirkel")) {
-                    new CirkelApp(root);
+                switch (keuzeMenu.getValue()) {
+                    case "Lijnstuk" -> new LijnStukApp(root);
+                    case "Rechthoek" -> new RechthoekApp(root);
+                    case "Cirkel" -> new CirkelApp(root);
                 }
             }
         });

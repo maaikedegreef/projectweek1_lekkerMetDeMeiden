@@ -2,7 +2,7 @@ package domain;
 
 import java.util.Objects;
 
-public class LijnStuk {
+public class LijnStuk extends Vorm {
 
     private Punt startPunt,eindPunt;
 
