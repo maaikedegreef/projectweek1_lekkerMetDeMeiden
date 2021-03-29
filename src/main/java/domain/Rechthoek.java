@@ -42,10 +42,8 @@ public class Rechthoek {
 
     @Override
     public String toString() {
-        return "Rechthoek{" +
-                "breedte=" + breedte +
-                ", hoogte=" + hoogte +
-                ", linkerBovenHoek=" + linkerBovenhoek +
-                '}';
+        return "Rechthoek: linkerbovenhoek: " + linkerBovenhoek +
+                " - breedte: " + breedte +
+                " - hoogte: " + hoogte;
     }
 }
