@@ -15,7 +15,6 @@ public class CirkelApp {
     private TextField invoerX, invoerY, invoerStraal;
     private Alert foutenboodschap = new Alert(Alert.AlertType.WARNING);
 
-    private Punt middelpunt;
     private Cirkel cirkel;
 
     public CirkelApp(GridPane root) {
@@ -45,7 +44,7 @@ public class CirkelApp {
 
         invoerY.setOnAction(eventIngaveY -> {
             try {
-                middelpunt = new Punt(Integer.parseInt(invoerX.getText()), Integer.parseInt(invoerY.getText()));
+                Integer.parseInt(invoerY.getText());
                 root.add(invoerStraalLabel, 0, 2);
                 root.add(invoerStraal, 1, 2);
             } catch (NumberFormatException e) {
@@ -58,6 +57,7 @@ public class CirkelApp {
 
         invoerStraal.setOnAction(eventIngaveStraal -> {
             try {
+                Punt middelpunt = new Punt(Integer.parseInt(invoerX.getText()), Integer.parseInt(invoerY.getText()));
                 cirkel = new Cirkel(middelpunt, Integer.parseInt(invoerStraal.getText()));
                 root.getChildren().clear();
                 Text uitvoer = new Text();
