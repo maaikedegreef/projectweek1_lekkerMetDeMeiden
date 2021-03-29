@@ -25,9 +25,9 @@ public class RechthoekApp {
         invoerHoogteLabel = new Label("Geef de hoogte van de rechthoek");
         invoerHoogte= new TextField();
 
-        invoerLinkerBovenhoekXLabel = new Label("Geef de x coordinate van de linkerbovenhoek");
+        invoerLinkerBovenhoekXLabel = new Label("Geef de x coordinaat van de linkerbovenhoek");
         invoerLinkerXBovenhoek = new TextField();
-        invoerLinkerBovenhoekYLabel = new Label("Geef de Y coordinate van de linkerbovenhoek");
+        invoerLinkerBovenhoekYLabel = new Label("Geef de Y coordinaat van de linkerbovenhoek");
         invoerLinkerYBovenhoek = new TextField();
 
         root.add(invoerBreedteLabel , 0 ,0);
@@ -41,7 +41,6 @@ public class RechthoekApp {
                 root.add(invoerHoogteLabel , 0 ,1);
                 root.add(invoerHoogte , 1 ,1);
             }catch (NumberFormatException e){
-
                 invoerBreedte.clear();
                 foutenboodschap.setTitle("Warning");
                 foutenboodschap.setContentText("Breedte is invalid");
@@ -57,7 +56,6 @@ public class RechthoekApp {
                 root.add(invoerLinkerBovenhoekXLabel , 0 ,2);
                 root.add(invoerLinkerXBovenhoek , 1 ,2);
             }catch (NumberFormatException e){
-
                 invoerHoogte.clear();
                 foutenboodschap.setTitle("Warning");
                 foutenboodschap.setContentText("Hoogte is invalid");
@@ -92,27 +90,16 @@ public class RechthoekApp {
                 root.add(uitvoer, 0, 0);
 
             } catch(NumberFormatException e){
-
                 invoerLinkerYBovenhoek.clear();
                 foutenboodschap.setTitle("Warning");
                 foutenboodschap.setContentText("Y is invalid");
                 foutenboodschap.showAndWait();
-            }
-            catch(DomainException e){
-
+            } catch(DomainException e){
                 invoerLinkerYBovenhoek.clear();
                 foutenboodschap.setTitle("Warning");
-                foutenboodschap.setContentText("breedte of lengte is invalid");
+                foutenboodschap.setContentText(e.getMessage());
                 foutenboodschap.showAndWait();
             }
         });
-
-
-
-
-
-
     }
-
-
 }

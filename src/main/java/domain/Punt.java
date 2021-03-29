@@ -20,15 +20,12 @@ public class Punt {
     @Override
     public boolean equals(Object object){
         if(object instanceof Punt){
-            if(((Punt) object).getX() == this.getX() && ((Punt) object).getY() == this.getY()) return true;
+            return ((Punt) object).getX() == this.getX() && ((Punt) object).getY() == this.getY();
         }
         return false;
     }
     @Override
     public String toString() {
-        return "Punt{" +
-                "x=" + x +
-                ", y=" + y +
-                '}';
+        return "(" + x + ", " + y + ")";
     }
 }

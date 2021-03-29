@@ -26,9 +26,6 @@ public class FiguurApp {
                 if (keuzeMenu.getValue().equals("Cirkel")) {
                     new CirkelApp(root);
                 }
-
-
-
             }
         });
     }

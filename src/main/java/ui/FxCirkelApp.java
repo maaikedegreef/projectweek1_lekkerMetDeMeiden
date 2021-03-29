@@ -1,6 +1,5 @@
 package ui;
 
-import domain.Cirkel;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
@@ -11,7 +10,7 @@ public class FxCirkelApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         GridPane root = new GridPane();
-        Scene scene = new Scene(root,200,100);
+        Scene scene = new Scene(root,500,100);
         new CirkelApp(root);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Cirkel App");

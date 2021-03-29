@@ -1,6 +1,7 @@
 package ui;
 
 import domain.Cirkel;
+import domain.DomainException;
 import domain.Punt;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -52,7 +53,7 @@ public class CirkelApp {
             } catch (NumberFormatException e) {
                 invoerY.clear();
                 foutenboodschap.setTitle("Warning");
-                foutenboodschap.setContentText("y coördinaat moet een geheel getal zijn");
+                foutenboodschap.setContentText(e.getMessage());
                 foutenboodschap.showAndWait();
             }
         });
@@ -64,12 +65,10 @@ public class CirkelApp {
                 Text uitvoer = new Text();
                 uitvoer.setText(cirkel.toString());
                 root.add(uitvoer, 0, 0);
-            } catch (NumberFormatException e) {
-
+            } catch (NumberFormatException | DomainException e) {
                 invoerStraal.clear();
-
                 foutenboodschap.setTitle("Warning");
-                foutenboodschap.setContentText("Straal moet minstens 1 zijn.");
+                foutenboodschap.setContentText(e.getMessage());
                 foutenboodschap.showAndWait();
             }
         });

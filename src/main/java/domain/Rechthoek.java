@@ -7,7 +7,6 @@ public class Rechthoek {
    private Punt linkerBovenhoek;
 
     public Rechthoek( Punt linkerBovenHoek, int breedte, int hoogte) {
-
         if(linkerBovenHoek == null) throw new DomainException("linkerbovenhoek is null");
         if(breedte < 0) throw new DomainException("breedte is kleiner dan 0");
         if(breedte == 0) throw new DomainException("breedte is 0");

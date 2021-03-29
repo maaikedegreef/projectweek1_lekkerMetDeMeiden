@@ -7,11 +7,10 @@ import javafx.stage.Stage;
 
 public class FxPuntApp extends Application {
 
-
     @Override
     public void start(Stage primaryStage) {
         GridPane root = new GridPane();
-        Scene scene = new Scene(root,200,100);
+        Scene scene = new Scene(root,300,100);
         new PuntApp(root);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Punt App");
