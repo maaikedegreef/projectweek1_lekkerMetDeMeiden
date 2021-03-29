@@ -16,7 +16,6 @@ public class LijnStukApp {
     private Alert foutenboodschap = new Alert(Alert.AlertType.WARNING);
 
     private LijnStuk lijnStuk;
-    private int x1, x2, y1, y2;
 
     public LijnStukApp(GridPane root) {
         invoerStartXLabel =  new Label("Startpunt x: ");
@@ -36,7 +35,7 @@ public class LijnStukApp {
 
         invoerStartX.setOnAction(eventIngaveBreedte ->{
             try{
-                x1 = Integer.parseInt(invoerStartX.getText());
+                Integer.parseInt(invoerStartX.getText());
                 root.add(invoerStartYLabel , 0 ,1);
                 root.add(invoerStartY , 1 ,1);
 
@@ -50,7 +49,7 @@ public class LijnStukApp {
 
         invoerStartY.setOnAction(eventIngaveBreedte ->{
             try{
-                y1 = Integer.parseInt(invoerStartY.getText());
+                Integer.parseInt(invoerStartY.getText());
                 root.add(invoerEindXLabel , 0 ,2);
                 root.add(invoerEindX , 1 ,2);
 
@@ -65,7 +64,7 @@ public class LijnStukApp {
 
         invoerEindX.setOnAction(eventIngaveBreedte ->{
             try{
-                x2 = Integer.parseInt(invoerEindX.getText());
+                Integer.parseInt(invoerEindX.getText());
                 root.add(invoerEindYLabel , 0 ,3);
                 root.add(invoerEindY , 1 ,3);
             }catch (NumberFormatException e){
@@ -78,10 +77,16 @@ public class LijnStukApp {
 
         invoerEindY.setOnAction(eventIngaveBreedte ->{
             try{
-                y2 = Integer.parseInt(invoerEindY.getText());
-                lijnStuk = new LijnStuk(new Punt(x1, y1), new Punt(x2, y2));
+                Integer.parseInt(invoerEindY.getText());
+                lijnStuk = new LijnStuk(
+                        new Punt(
+                                Integer.parseInt(invoerStartX.getText()),
+                                Integer.parseInt(invoerStartY.getText())),
+                        new Punt(
+                                Integer.parseInt(invoerEindX.getText()),
+                                Integer.parseInt(invoerEindY.getText())));
 
-                root.getChildren().clear();
+                        root.getChildren().clear();
 
                 Text uitvoer = new Text();
                 uitvoer.setText(lijnStuk.toString());
