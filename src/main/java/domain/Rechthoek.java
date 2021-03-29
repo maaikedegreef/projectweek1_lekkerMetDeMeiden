@@ -33,8 +33,8 @@ public class Rechthoek {
     public boolean equals(Object object){
 
         if(object instanceof Rechthoek){
-            if(((Rechthoek) object).getBreedte() == this.getBreedte() && ((Rechthoek) object).getHoogte() == this.getHoogte()
-            && ((Rechthoek) object).getlinkerBovenhoek().equals(this.linkerBovenhoek)) return true;
+            return ((Rechthoek) object).getBreedte() == this.getBreedte() && ((Rechthoek) object).getHoogte() == this.getHoogte()
+                    && ((Rechthoek) object).getlinkerBovenhoek().equals(this.linkerBovenhoek);
         }
           return false;
         }
