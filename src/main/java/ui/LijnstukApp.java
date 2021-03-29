@@ -1,23 +1,24 @@
 package ui;
 
-import domain.DomainException;
-import domain.LijnStuk;
-import domain.Punt;
+import domain.*;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
-public class LijnStukApp {
+public class LijnstukApp {
 
     private TextField invoerStartX, invoerStartY, invoerEindX, invoerEindY;
     private Label invoerStartXLabel, invoerStartYLabel, invoerEindXLabel, invoerEindYLabel;
     private Alert foutenboodschap = new Alert(Alert.AlertType.WARNING);
 
     private LijnStuk lijnStuk;
+    public LijnstukApp(GridPane root, Tekening tekening) {
 
-    public LijnStukApp(GridPane root) {
+    }
+    public LijnstukApp(GridPane root) {
+
         invoerStartXLabel =  new Label("Startpunt x: ");
         invoerStartX= new TextField();
 

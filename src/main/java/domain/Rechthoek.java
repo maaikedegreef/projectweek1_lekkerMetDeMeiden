@@ -2,8 +2,7 @@ package domain;
 
 public class Rechthoek extends Vorm {
 
-   private int breedte;
-   private int hoogte;
+   private int breedte , hoogte;
    private Punt linkerBovenhoek;
 
     public Rechthoek( Punt linkerBovenHoek, int breedte, int hoogte) {
@@ -25,11 +24,12 @@ public class Rechthoek extends Vorm {
     public int getHoogte() {
         return hoogte;
     }
-
     public Punt getlinkerBovenhoek() {
         return linkerBovenhoek;
     }
-
+    public Omhullende getOmhullende(){
+        return new Omhullende(this.linkerBovenhoek , this.getBreedte(), this.getHoogte());
+    }
     public boolean equals(Object object){
 
         if(object instanceof Rechthoek){
@@ -42,8 +42,8 @@ public class Rechthoek extends Vorm {
 
     @Override
     public String toString() {
-        return "Rechthoek: linkerbovenhoek: " + linkerBovenhoek +
-                " - breedte: " + breedte +
-                " - hoogte: " + hoogte;
+        return "Rechthoek: linkerbovenhoek: ("+ linkerBovenhoek.getX() + "," + linkerBovenhoek.getY() + ") - breedte: " + breedte + " - hoogte: " + hoogte +
+                "\n" + this.getOmhullende().toString();
+
     }
 }

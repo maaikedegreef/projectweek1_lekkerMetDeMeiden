@@ -3,6 +3,7 @@ package ui;
 import domain.DomainException;
 import domain.Punt;
 import domain.Rechthoek;
+import domain.Tekening;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -17,14 +18,15 @@ public class RechthoekApp {
     private Alert foutenboodschap = new Alert(Alert.AlertType.WARNING);
 
     private Rechthoek rechthoek;
+    public RechthoekApp(GridPane root, Tekening tekening) {
 
+    }
     public RechthoekApp(GridPane root) {
 
         invoerBreedteLabel =  new Label("Geef de breedte van de rechthoek");
         invoerBreedte= new TextField();
         invoerHoogteLabel = new Label("Geef de hoogte van de rechthoek");
         invoerHoogte= new TextField();
-
         invoerLinkerBovenhoekXLabel = new Label("Geef de x coordinaat van de linkerbovenhoek");
         invoerLinkerXBovenhoek = new TextField();
         invoerLinkerBovenhoekYLabel = new Label("Geef de Y coordinaat van de linkerbovenhoek");
@@ -33,51 +35,9 @@ public class RechthoekApp {
         root.add(invoerBreedteLabel , 0 ,0);
         root.add(invoerBreedte , 1 ,0);
 
-
-        invoerBreedte.setOnAction(eventIngaveBreedte ->{
-            /* de tekst halen en een integer maken */
-            try{
-                Integer.parseInt(invoerBreedte.getText());
-                root.add(invoerHoogteLabel , 0 ,1);
-                root.add(invoerHoogte , 1 ,1);
-            }catch (NumberFormatException e){
-                invoerBreedte.clear();
-                foutenboodschap.setTitle("Warning");
-                foutenboodschap.setContentText("Breedte is invalid");
-                foutenboodschap.showAndWait();
-            }
-
-        } );
-
-        invoerHoogte.setOnAction(eventIngaveBreedte ->{
-            /* de tekst halen en een integer maken */
-            try{
-                Integer.parseInt(invoerHoogte.getText());
-                root.add(invoerLinkerBovenhoekXLabel , 0 ,2);
-                root.add(invoerLinkerXBovenhoek , 1 ,2);
-            }catch (NumberFormatException e){
-                invoerHoogte.clear();
-                foutenboodschap.setTitle("Warning");
-                foutenboodschap.setContentText("Hoogte is invalid");
-                foutenboodschap.showAndWait();
-            }
-
-        } );
-        invoerLinkerXBovenhoek.setOnAction(eventIngaveBreedte ->{
-            /* de tekst halen en een integer maken */
-            try{
-                Integer.parseInt(invoerLinkerXBovenhoek.getText());
-                root.add(invoerLinkerBovenhoekYLabel , 0 ,3);
-                root.add(invoerLinkerYBovenhoek , 1 ,3);
-            }catch (NumberFormatException e){
-
-                invoerLinkerXBovenhoek.clear();
-                foutenboodschap.setTitle("Warning");
-                foutenboodschap.setContentText("x is invalid");
-                foutenboodschap.showAndWait();
-            }
-
-        } );
+        Actionevent.normalevent(root , 1, invoerBreedte , invoerHoogte , invoerHoogteLabel , foutenboodschap , "Breedte is invalid" );
+        Actionevent.normalevent(root ,  2,invoerHoogte , invoerLinkerXBovenhoek , invoerLinkerBovenhoekXLabel , foutenboodschap , "Hoogte is invalid" );
+        Actionevent.normalevent(root , 3, invoerLinkerXBovenhoek , invoerLinkerYBovenhoek , invoerLinkerBovenhoekYLabel , foutenboodschap , "Hoogte is invalid" );
 
         invoerLinkerYBovenhoek.setOnAction(eventIngaveY -> {
             try {
