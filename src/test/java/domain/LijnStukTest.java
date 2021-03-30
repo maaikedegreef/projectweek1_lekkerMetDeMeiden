@@ -11,6 +11,8 @@ public class LijnStukTest {
     private Punt zelfdeAlsPunt1 = new Punt(10, 20);
     private Punt punt2 = new Punt(190, 30);
     private Punt zelfdeAlsPunt2 = new Punt(190, 30);
+    private Punt punt3 = new Punt(4, 8);
+    private Punt punt4 = new Punt(12, 12);
 
     @Test
     public void LijnStuk_moet_lijnstuk_aanmaken_met_gegeven_startPunt_en_eindPunt() {
@@ -41,6 +43,17 @@ public class LijnStukTest {
     public void equals_moet_false_teruggeven_als_parameter_null(){
         LijnStuk lijnStuk = new LijnStuk(punt1, punt2);
         assertFalse(lijnStuk.equals(null));
+    }
+
+    @Test
+    public void test_Lijnstuk_getOmhullende_GeeftOmhulling() {
+        LijnStuk lijnStuk = new LijnStuk(punt3, punt4);
+
+        Punt positieLinksBoven = new Punt(4,12);
+        int breedte = 8;
+        int hoogte = 4;
+        Omhullende omhullendeLijnstuk = new Omhullende(positieLinksBoven,breedte,hoogte);
+        assertEquals(lijnStuk.getOmhullende(),omhullendeLijnstuk);
     }
 
 }
