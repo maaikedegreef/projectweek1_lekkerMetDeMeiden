@@ -25,9 +25,14 @@ public class Tekening {
         return name;
     }
 
-    public void voegToe(Vorm vorm){
+    public void voegToe (Vorm vorm) {
         if(vorm == null) return;
-        vormen.add(vorm);
+        if (vorm.getOmhullende().getMinimumX() < MIN_X
+                || vorm.getOmhullende().getMinimumY() < MIN_Y
+                || vorm.getOmhullende().getMaximumX() > MAX_X
+                || vorm.getOmhullende().getMaximumY() > MAX_Y) {
+            throw new DomainException("Vorm valt buiten tekening");
+        } vormen.add(vorm);
     }
 
     public Vorm getVorm(int index){
