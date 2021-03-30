@@ -1,10 +1,14 @@
 package domain;
 
 import javafx.scene.paint.Color;
+import ui.Drawable;
 
-public abstract class Vorm {
+public abstract class Vorm implements Drawable {
     private Color kleur;
 
+    public Vorm(){
+
+    }
     public Vorm(Color kleur) {
         if (kleur == null) { kleur = Color.WHITE;
         }
@@ -25,4 +29,5 @@ public abstract class Vorm {
     public abstract Omhullende getOmhullende();
 
     public abstract String toString();
+
 }
