@@ -14,7 +14,7 @@ public class Tekening {
 
     public Tekening(String naam) {
         if (isValidNaam(naam)) this.name = naam;
-        else throw new DomainException("Ongeldige naam");
+        else throw new IllegalArgumentException("Ongeldige naam");
     }
 
     public static boolean isValidNaam(String naamTekening) {
@@ -25,10 +25,18 @@ public class Tekening {
         return name;
     }
 
-    public void voegToe(Vorm vorm){
+    public void voegToe (Vorm vorm) {
         if(vorm == null) return;
-        vormen.add(vorm);
+        Omhullende lol = vorm.getOmhullende();
+
+        if (vorm.getOmhullende().getMinimumX() < MIN_X
+                || vorm.getOmhullende().getMinimumY() < MIN_Y
+                || vorm.getOmhullende().getMaximumX() > MAX_X
+                || vorm.getOmhullende().getMaximumY() > MAX_Y) {
+            throw new DomainException("Vorm valt buiten tekening");
+        } vormen.add(vorm);
     }
+
     public Vorm getVorm(int index){
         if(index < 0) throw new IllegalArgumentException("de index is negatief");
         if(index >= vormen.size()) throw new IllegalArgumentException("de index  is negatief");
