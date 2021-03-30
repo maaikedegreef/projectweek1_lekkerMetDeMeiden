@@ -32,7 +32,7 @@ public class Rechthoek extends Vorm {
     public Omhullende getOmhullende(){
         return new Omhullende(this.linkerBovenhoek , this.getBreedte(), this.getHoogte());
     }
-    
+
     @Override
     public boolean equals(Object object){
         if(object instanceof Rechthoek){
