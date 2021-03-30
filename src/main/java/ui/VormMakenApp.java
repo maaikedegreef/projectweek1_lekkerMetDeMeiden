@@ -12,7 +12,6 @@ public class VormMakenApp {
     private ObservableList<String> mogelijkeFiguren;
 
     public VormMakenApp(GridPane root, Tekening tekening) {
-
         this.root = root;
         mogelijkeFiguren = FXCollections.observableArrayList("Cirkel","Rechthoek","Lijnstuk","Driehoek");
         keuzeMenu = new ComboBox(mogelijkeFiguren);
@@ -34,10 +33,6 @@ public class VormMakenApp {
                         root.getChildren().remove(keuzeMenu);
                     }
                 }
-
         );}
-
-
-
 }
 

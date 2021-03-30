@@ -1,13 +1,9 @@
 package ui;
 
-import domain.DomainException;
-import domain.Punt;
-import domain.Rechthoek;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
 
 public class Actionevent {
 

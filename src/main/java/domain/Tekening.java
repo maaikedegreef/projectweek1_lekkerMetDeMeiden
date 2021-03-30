@@ -4,7 +4,6 @@ import javafx.scene.layout.Pane;
 import ui.Drawable;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Tekening implements Drawable {
 
@@ -45,8 +44,6 @@ public class Tekening implements Drawable {
         if(index >= vormen.size()) throw new IllegalArgumentException("de index  is negatief");
         return vormen.get(index);
     }
-
-
     public int getAantalVormen(){
         return vormen.size();
     }
@@ -77,7 +74,6 @@ public class Tekening implements Drawable {
 
     @Override
     public void teken(Pane root) {
+        vormen.forEach(x -> x.teken(root));
     }
 }
-
-
