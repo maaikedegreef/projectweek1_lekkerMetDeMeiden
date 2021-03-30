@@ -1,5 +1,8 @@
 package domain;
 
+import javafx.scene.layout.Pane;
+import ui.Drawable;
+
 public class Rechthoek extends Vorm {
 
    private int breedte , hoogte;
@@ -46,6 +49,11 @@ public class Rechthoek extends Vorm {
     public String toString() {
         return "Rechthoek: linkerbovenhoek: ("+ linkerBovenhoek.getX() + "," + linkerBovenhoek.getY() + ") - breedte: " + breedte + " - hoogte: " + hoogte +
                 "\n" + this.getOmhullende().toString();
+    }
 
+
+    @Override
+    public void teken(Pane root) {
+        Rechthoek r = new Rechthoek(getlinkerBovenhoek(), getBreedte(), getHoogte());
     }
 }

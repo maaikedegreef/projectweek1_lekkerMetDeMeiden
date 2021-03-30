@@ -1,5 +1,11 @@
 package domain;
 
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+
+
+
 public class Cirkel extends Vorm {
     private Punt middelPunt;
     private int radius;
@@ -45,7 +51,12 @@ public class Cirkel extends Vorm {
 
     @Override
     public Omhullende getOmhullende() {
-        return new Omhullende(new Punt(middelPunt.getX() - radius, middelPunt.getY() + radius), 2*radius, 2*radius);
+        return new Omhullende(new Punt(middelPunt.getX() - radius, middelPunt.getY() - radius), 2*radius, 2*radius);
+    }
+
+    @Override
+    public void teken(Pane root) {
+        Cirkel c = new Cirkel(new Punt(middelPunt.getX(), middelPunt.getY()), radius);
     }
 }
 

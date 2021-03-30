@@ -1,5 +1,7 @@
 package domain;
 
+import javafx.scene.layout.Pane;
+
 import java.util.Objects;
 
 public class LijnStuk extends Vorm {
@@ -81,6 +83,11 @@ public class LijnStuk extends Vorm {
     @Override
     public Omhullende getOmhullende() {
         return new Omhullende(getLinksBoven(), getbreedte(), getHoogte());
+    }
+
+    @Override
+    public void teken(Pane root) {
+        LijnStuk l = new LijnStuk(startPunt, eindPunt);
     }
 }
 
