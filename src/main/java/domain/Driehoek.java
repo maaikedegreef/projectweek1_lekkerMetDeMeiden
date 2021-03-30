@@ -63,6 +63,26 @@ public class Driehoek extends Vorm{
         return kleinsteHoekpunt;
     }
 
+    public Punt vindGrootsteHoekpunt(){
+        ArrayList<Punt> hoekpunten = new ArrayList<>();
+        hoekpunten.add(hoekpunt1);
+        hoekpunten.add(hoekpunt2);
+        hoekpunten.add(hoekpunt3);
+
+        Punt grootsteHoekpunt = hoekpunten.get(0);
+        for (Punt p: hoekpunten){
+            if (p.getY() == grootsteHoekpunt.getY()){
+                if (p.getY() > grootsteHoekpunt.getY()){
+                    grootsteHoekpunt = p;
+                }
+            } else if (p.getX() > grootsteHoekpunt.getX()){
+                grootsteHoekpunt = p;
+            }
+        }
+        return grootsteHoekpunt;
+
+    }
+
     public void setHoekpunt1(Punt hoekpunt1) {
         if (hoekpunt1 == null) {
             throw new DomainException("Hoekpunt kan niet leeg zijn.");
