@@ -48,19 +48,18 @@ public class TekeningApp {
             uitvoer.setVisible(false);
             if (keuzeMenu.getValue() != null) {
 
-                if (keuzeMenu.getValue().equals("Vorm maken")) {
-                    keuzeMenu.setValue("");
-                    new VormMakenApp(root, tekening);
-
-                } else if (keuzeMenu.getValue().equals("Tekening tonen")) {
-                    keuzeMenu.setValue("");
-                    uitvoer.setPrefRowCount(tekening.getAantalVormen()*2);
-                    uitvoer.setText(tekening.toString());
-                    uitvoer.setVisible(true);
-
-
-                } else if (keuzeMenu.getValue().equals("stop")) {
-
+                switch (keuzeMenu.getValue()) {
+                    case "Vorm maken" -> {
+                        keuzeMenu.setValue("");
+                        new VormMakenApp(root, tekening);
+                    }
+                    case "Tekening tonen" -> {
+                        keuzeMenu.setValue("");
+                        uitvoer.setPrefRowCount(tekening.getAantalVormen() * 2);
+                        uitvoer.setText(tekening.toString());
+                        uitvoer.setVisible(true);
+                    }
+                    case "stop" -> System.exit(0);
                 }
             }
         });
