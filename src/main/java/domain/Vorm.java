@@ -1,5 +1,4 @@
 package domain;
-
 import javafx.scene.paint.Color;
 import ui.Drawable;
 
