@@ -66,4 +66,16 @@ public class DriehoekTest {
         assertFalse(drieHoek.equals(null));
     }
 
+    @Test
+    public void test_Driehoek_getOmhullende_GeeftOmhulling(){
+        Driehoek drieHoek = new Driehoek(punt1, punt2, punt3);
+        Punt linksBoven = new Punt(10, 40);
+        int breedte = 180;
+        int hoogte = 20;
+        Omhullende omhullende = new Omhullende(linksBoven,breedte,hoogte);
+        assertEquals(drieHoek.getOmhullende(),omhullende);
+    }
+
+
+
 }
