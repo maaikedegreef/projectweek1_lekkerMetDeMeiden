@@ -63,7 +63,8 @@ public class Driehoek extends Vorm{
         return kleinsteHoekpunt;
     }
 
-    public Punt vindGrootsteHoekpunt(){
+
+    public Punt vindPuntGrootsteY(){
         ArrayList<Punt> hoekpunten = new ArrayList<>();
         hoekpunten.add(hoekpunt1);
         hoekpunten.add(hoekpunt2);
@@ -75,11 +76,31 @@ public class Driehoek extends Vorm{
                 if (p.getY() > grootsteHoekpunt.getY()){
                     grootsteHoekpunt = p;
                 }
-            } else if (p.getX() > grootsteHoekpunt.getX()){
+            } else if (p.getY() > grootsteHoekpunt.getY()){
                 grootsteHoekpunt = p;
             }
         }
         return grootsteHoekpunt;
+
+    }
+
+    public Punt vindPuntKleinsteY(){
+        ArrayList<Punt> hoekpunten = new ArrayList<>();
+        hoekpunten.add(hoekpunt1);
+        hoekpunten.add(hoekpunt2);
+        hoekpunten.add(hoekpunt3);
+
+        Punt kleinsteHoekpunt = hoekpunten.get(0);
+        for (Punt p: hoekpunten){
+            if (p.getY() == kleinsteHoekpunt.getY()){
+                if (p.getY() < kleinsteHoekpunt.getY()){
+                    kleinsteHoekpunt = p;
+                }
+            } else if (p.getY() < kleinsteHoekpunt.getY()){
+                kleinsteHoekpunt = p;
+            }
+        }
+        return kleinsteHoekpunt;
 
     }
 
@@ -142,11 +163,27 @@ public class Driehoek extends Vorm{
 
     @Override
     public Omhullende getOmhullende() {
-        return null;
+        return new Omhullende(getLinksBoven(),getBreedte(), getHoogte());
     }
 
     //    @Override
 //    public Omhullende getOmhullende() {
 //        return new Omhullende(new Punt(hoekpunten[0].getX(), hoekpunten[0].gety()), Math.sqrt(Math.pow((hoekpunt1.getX()-hoekpunt2.getX()), 2) + Math.pow((hoekpunt1.getY()-hoekpunt2.getY()), 2)), Math.sqrt(Math.pow((hoekpunt2.getX()-hoekpunt2.getX()), 2) + Math.pow((hoekpunt1.getY()-hoekpunt2.getY()), 2)));
 //    }
+
+    public Punt getLinksBoven() {
+        this.sorteerHoekpunten();
+        return new Punt(hoekpunt1.getX(), vindPuntGrootsteY().getY());
+    }
+
+    public int getBreedte() {
+        this.sorteerHoekpunten();
+        return (hoekpunt3.getX() - hoekpunt1.getX());
+    }
+
+    public int getHoogte() {
+        return (getLinksBoven().getY() - vindPuntKleinsteY().getY());
+    }
+
+
 }
