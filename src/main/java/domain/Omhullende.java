@@ -33,16 +33,16 @@ public class Omhullende {
         return this.positieLinksBoven.getY();
     }
     public int getMaximumX(){
-        return this.positieLinksBoven.getX() + breedte;
+        return this.positieLinksBoven.getX() + this.breedte;
     }
     public int getMaximumY(){
-        return this.positieLinksBoven.getY() + this.getHoogte();
+        return this.positieLinksBoven.getY() + this.hoogte;
     }
     @Override
     public boolean equals(Object object){
         if(object instanceof Omhullende){
             if(((Omhullende) object).positieLinksBoven.equals(this.positieLinksBoven) &&
-                    ((Omhullende) object).getHoogte() == this.getBreedte() &&
+                    ((Omhullende) object).getBreedte() == this.getBreedte() &&
                     ((Omhullende) object).getHoogte() == this.getHoogte()){
                 return true;
             }
@@ -51,6 +51,6 @@ public class Omhullende {
     }
     @Override
     public String toString() {
-        return "Omhullende: " + "(" + positieLinksBoven.getX()  + ", " + positieLinksBoven.getY() +  ") - " +  breedte + " - " + hoogte ;
+        return "Omhullende: " + positieLinksBoven +  " - " +  breedte + " - " + hoogte ;
     }
 }
