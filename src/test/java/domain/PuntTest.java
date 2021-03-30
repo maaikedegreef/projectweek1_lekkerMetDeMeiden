@@ -46,4 +46,22 @@ public class PuntTest {
         Punt puntAnder = new Punt(xCoordinaat, yCoordinaat-1);
         assertNotEquals(punt, puntAnder);
     }
+
+    @Test
+    public void compareTo_moet_0_teruggeven_als_punten_gelijk_zijn(){
+        assertEquals(punt.compareTo(punt),0);
+    }
+
+    @Test
+    public void compareTo_moet_min1_teruggeven_als_punt1_kleiner_is_dan_punt2(){
+        Punt puntAnder = new Punt(xCoordinaat+1, yCoordinaat+1);
+        assertEquals(punt.compareTo(puntAnder),-1);
+    }
+
+    @Test
+    public void compareTo_moet_1_teruggeven_als_punt1_groter_is_dan_punt2(){
+        Punt puntAnder = new Punt(xCoordinaat-1, yCoordinaat-1);
+        assertEquals(punt.compareTo(puntAnder),1);
+    }
+
 }
