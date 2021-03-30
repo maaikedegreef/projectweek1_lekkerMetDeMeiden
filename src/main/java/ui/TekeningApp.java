@@ -14,7 +14,6 @@ public class TekeningApp {
     private ObservableList<String> opties;
 
     private TextArea uitvoer;
-
     private Tekening tekening;
 
     public TekeningApp(GridPane root) {
