@@ -14,13 +14,11 @@ public class Tekening {
 
     public Tekening(String naam) {
         if (isValidNaam(naam)) this.name = naam;
-
+        else throw new DomainException("Ongeldige naam");
     }
 
     public static boolean isValidNaam(String naamTekening) {
-       if(naamTekening == null) throw new IllegalArgumentException("naam is null");
-       if(naamTekening.trim().equals("")) throw new IllegalArgumentException("ongeldig");
-       return true;
+       return (naamTekening != null && !naamTekening.isBlank());
     }
 
     public String getNaam() {
@@ -41,17 +39,13 @@ public class Tekening {
     }
     public void verwijder(Vorm vorm){
         if(vorm == null) return;
-        if(vormen.contains(vorm))vormen.remove(vorm);
+        vormen.remove(vorm);
     }
     public boolean bevat(Vorm vorm){
         if(vorm == null) return false;
         return vormen.contains(vorm);
     }
-    /**
-     *
-     * In de UMl is er geen getVormen maar zou hier wel handig zijn...
-     *
-     * */
+
     @Override
     public boolean equals(Object object){
         if(object instanceof Tekening && ((Tekening) object).getAantalVormen() == this.getAantalVormen()){
