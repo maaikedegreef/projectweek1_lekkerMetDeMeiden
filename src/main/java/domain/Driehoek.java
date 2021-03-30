@@ -119,5 +119,9 @@ public class Driehoek extends Vorm{
                 " hoekpunt3: (" + hoekpunt3.getX() + ", " + hoekpunt3.getY() + ")";
     }
 
-    
+
+    @Override
+    public Omhullende getOmhullende() {
+        return null;
+    }
 }
