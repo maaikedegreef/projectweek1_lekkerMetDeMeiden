@@ -22,7 +22,7 @@ public class FiguurApp {
                     case "Lijnstuk" -> new LijnstukApp(root);
                     case "Rechthoek" -> new RechthoekApp(root);
                     case "Cirkel" -> new CirkelApp(root);
-                    case "Driehoek" -> new DriehoekApp(root);
+                    //case "Driehoek" -> new DriehoekApp(root);
                 }
             }
         });
