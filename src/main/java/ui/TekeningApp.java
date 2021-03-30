@@ -23,6 +23,7 @@ public class TekeningApp {
 
         opties = FXCollections.observableArrayList("Vorm maken","Tekening tonen","stop","");
         keuzeMenu = new ComboBox<>(opties);
+        keuzeMenu.setValue("Kies actie");
 
         root.add(naamTekeningLabel,0,0);
         root.add(invoerNaamTekening,1,0);
