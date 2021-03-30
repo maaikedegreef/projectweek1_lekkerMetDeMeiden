@@ -45,6 +45,8 @@ public class Tekening implements Drawable {
         if(index >= vormen.size()) throw new IllegalArgumentException("de index  is negatief");
         return vormen.get(index);
     }
+
+
     public int getAantalVormen(){
         return vormen.size();
     }
@@ -75,7 +77,6 @@ public class Tekening implements Drawable {
 
     @Override
     public void teken(Pane root) {
-
     }
 }
 
