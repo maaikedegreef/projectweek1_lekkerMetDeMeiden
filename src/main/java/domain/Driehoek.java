@@ -3,26 +3,27 @@ package domain;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Driehoek{
+public class Driehoek extends Vorm{
     private Punt hoekpunt1, hoekpunt2, hoekpunt3;
 
     public Driehoek(Punt hoekpunt1, Punt hoekpunt2, Punt hoekpunt3) {
+        if (hoekpunt1==null||hoekpunt2==null||hoekpunt3==null) throw new DomainException("Punten mogen niet leeg zijn");
         if (puntenVallenSamen(hoekpunt1, hoekpunt2, hoekpunt3)) throw new DomainException("Punten mogen niet samenvallen!");
         if (liggenOp1Lijn(hoekpunt1, hoekpunt2, hoekpunt3)) throw new DomainException("Punten mogen niet op 1 lijn liggen!");
-        setHoekpunt1(hoekpunt1);
-        setHoekpunt2(hoekpunt2);
-        setHoekpunt3(hoekpunt3);
+        this.hoekpunt1 = hoekpunt1;
+        this.hoekpunt2 = hoekpunt2;
+        this.hoekpunt3 = hoekpunt3;
     }
 
-    public Punt getHoekpunt1() {
+    public Punt getHoekPunt1() {
         return hoekpunt1;
     }
 
-    public Punt getHoekpunt2() {
+    public Punt getHoekPunt2() {
         return hoekpunt2;
     }
 
-    public Punt getHoekpunt3() {
+    public Punt getHoekPunt3() {
         return hoekpunt3;
     }
 
@@ -30,34 +31,37 @@ public class Driehoek{
         return (punt2.getX() - punt1.getX()) * (punt3.getY() - punt1.getY()) == ((punt3.getX() - punt1.getX()) * (punt2.getY() - punt1.getY()));
     }
 
-//    public void sorteerHoekpunten() {
-//        ArrayList<Punt> hoekpunten = new ArrayList<>();
-//        hoekpunten.add(hoekpunt1);
-//        hoekpunten.add(hoekpunt2);
-//        hoekpunten.add(hoekpunt3);
-//        for (Punt hoekpunt : hoekpunten) {
-//        for (int i = 0; i < hoekpunten.size(); i++) {
-//            if (hoekpunten.get(i).getX() < hoekpunten.get(i+1).getX()) Collections.swap();
-//        }
-//        }
-//    }
+    public void sorteerHoekpunten() {
+        ArrayList<Punt> hoekpunten = new ArrayList<>();
+        hoekpunten.add(hoekpunt1);
+        hoekpunten.add(hoekpunt2);
+        hoekpunten.add(hoekpunt3);
+        ArrayList<Punt> gesorteerdeHoekpunten = new ArrayList<>();
 
-//    public void sorteerHoekpunten() {
-//        ArrayList<Punt> hoekpunten = new ArrayList<>();
-//        hoekpunten.add(hoekpunt1);
-//        hoekpunten.add(hoekpunt2);
-//        hoekpunten.add(hoekpunt3);
-//        for (Punt hoekpunt : hoekpunten) {
-//            for (int i = 0; i < hoekpunten.size(); i++) {
-//                if (hoekpunten.get(i).getX() < hoekpunten.get(i+1).getX()) Collections.swap();
-//            }
-//        }
-//    }
-//
-//    private boolean vergelijkHoekpunten(Punt punt1, Punt punt2) {
-//        if (punt1.getX() < punt2.getX()) Collections.swap();
-//
-//    }
+        while (!hoekpunten.isEmpty()){
+            gesorteerdeHoekpunten.add(vindKleinsteHoekPunt(hoekpunten));
+            hoekpunten.remove(vindKleinsteHoekPunt(hoekpunten));
+        }
+
+        hoekpunt1 = gesorteerdeHoekpunten.get(0);
+        hoekpunt2 = gesorteerdeHoekpunten.get(1);
+        hoekpunt3 = gesorteerdeHoekpunten.get(2);
+
+    }
+
+    public Punt vindKleinsteHoekPunt(ArrayList<Punt> hoekpunten){
+        Punt kleinsteHoekpunt = hoekpunten.get(0);
+        for (Punt p: hoekpunten){
+            if (p.getX() == kleinsteHoekpunt.getX()){
+                if (p.getY() < kleinsteHoekpunt.getY()){
+                    kleinsteHoekpunt = p;
+                }
+            } else if (p.getX() < kleinsteHoekpunt.getX()){
+                kleinsteHoekpunt = p;
+            }
+        }
+        return kleinsteHoekpunt;
+    }
 
     public void setHoekpunt1(Punt hoekpunt1) {
         if (hoekpunt1 == null) {
@@ -94,23 +98,30 @@ public class Driehoek{
         return false;
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        boolean result = false;
-//        if (o instanceof Driehoek) {
-//            Driehoek d = (Driehoek) o;
-//            if (this.middelPunt.equals(c.middelPunt) && this.radius == c.radius) {
-//                result = true;
-//            }
-//        }
-//        return result;
-//    }
+    @Override
+    public boolean equals(Object o) {
+        boolean result = false;
+        if (o instanceof Driehoek) {
+            Driehoek d = (Driehoek) o;
+            d.sorteerHoekpunten();
+            this.sorteerHoekpunten();
+            if (hoekpunt1.equals(d.getHoekPunt1()) && hoekpunt2.equals(d.getHoekPunt2()) && hoekpunt3.equals(d.getHoekPunt3()) ) {
+                result = true;
+            }
+        }
+        return result;
+    }
 
     @Override
     public String toString() {
+        sorteerHoekpunten();
         return "Driehoek: hoekpunt1: (" + hoekpunt1.getX() + ", " + hoekpunt1.getY() + ") - hoekpunt2: (" + hoekpunt2.getX() + ", " + hoekpunt2.getY() + ") -" +
                 " hoekpunt3: (" + hoekpunt3.getX() + ", " + hoekpunt3.getY() + ")";
     }
 
 
+    @Override
+    public Omhullende getOmhullende() {
+        return null;
+    }
 }
