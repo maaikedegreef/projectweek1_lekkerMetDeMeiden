@@ -27,18 +27,20 @@ public class Rechthoek extends Vorm {
     public Punt getlinkerBovenhoek() {
         return linkerBovenhoek;
     }
+
+    @Override
     public Omhullende getOmhullende(){
         return new Omhullende(this.linkerBovenhoek , this.getBreedte(), this.getHoogte());
     }
-    public boolean equals(Object object){
 
+    @Override
+    public boolean equals(Object object){
         if(object instanceof Rechthoek){
             return ((Rechthoek) object).getBreedte() == this.getBreedte() && ((Rechthoek) object).getHoogte() == this.getHoogte()
                     && ((Rechthoek) object).getlinkerBovenhoek().equals(this.linkerBovenhoek);
         }
           return false;
         }
-
 
     @Override
     public String toString() {

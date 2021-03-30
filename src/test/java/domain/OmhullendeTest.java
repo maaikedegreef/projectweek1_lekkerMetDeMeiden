@@ -14,14 +14,15 @@ public class OmhullendeTest {
 
     @Before
     public void setUp() {
-        linkerBovenhoek = new Punt(200, 200);
-        breedte = 20;
-        hoogte = 40;
-        omhullende = new Omhullende(linkerBovenhoek,breedte, hoogte);
         breedte = 50;
         hoogte = 40;
         linkerBovenhoek = new Punt(100, 200);
         omhullendeextremas = new Omhullende(linkerBovenhoek,breedte, hoogte);
+        linkerBovenhoek = new Punt(200, 200);
+        breedte = 20;
+        hoogte = 40;
+        omhullende = new Omhullende(linkerBovenhoek,breedte, hoogte);
+
     }
 
     @Test

@@ -3,7 +3,7 @@ package domain;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Driehoek {
+public class Driehoek extends Vorm{
     private Punt hoekpunt1, hoekpunt2, hoekpunt3;
 
     public Driehoek(Punt hoekpunt1, Punt hoekpunt2, Punt hoekpunt3) {
@@ -118,4 +118,6 @@ public class Driehoek {
         return "Driehoek: hoekpunt1: (" + hoekpunt1.getX() + ", " + hoekpunt1.getY() + ") - hoekpunt2: (" + hoekpunt2.getX() + ", " + hoekpunt2.getY() + ") -" +
                 " hoekpunt3: (" + hoekpunt3.getX() + ", " + hoekpunt3.getY() + ")";
     }
+
+    
 }
