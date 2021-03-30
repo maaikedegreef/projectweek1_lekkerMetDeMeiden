@@ -121,7 +121,27 @@ public class TekeningTest {
         t.voegToe(dak);
         assertEquals(t.getVorm(0), dak);
     }
+    @Test (expected = DomainException.class)
+    public void vorm_buiten_de_tekening_toevoegen(){
+        Tekening t = new Tekening("t");
+        t.voegToe(new Cirkel(new Punt(10,10), 20));
+    }
 
+    @Test
+    public void vorm_op_tekening_minimum_toevoegen(){
+        Tekening t = new Tekening("t");
+        t.voegToe(new Cirkel(new Punt(20,20), 20));
+    }
+    @Test
+    public void vorm_op_tekening_maximum_toevoegen(){
+        Tekening t = new Tekening("t");
+        t.voegToe(new Cirkel(new Punt(379,379), 20));
+    }
+    @Test
+    public void vorm_in_de_tekening_toevoegen(){
+        Tekening t = new Tekening("t");
+        t.voegToe(new Cirkel(new Punt(30,30), 20));
+    }
 
     public Tekening createHuisMetSchouw() {
         Tekening huisMetSchouw = new Tekening("huisMetSchouw");

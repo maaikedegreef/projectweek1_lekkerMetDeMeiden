@@ -27,6 +27,8 @@ public class Tekening {
 
     public void voegToe (Vorm vorm) {
         if(vorm == null) return;
+        Omhullende lol = vorm.getOmhullende();
+
         if (vorm.getOmhullende().getMinimumX() < MIN_X
                 || vorm.getOmhullende().getMinimumY() < MIN_Y
                 || vorm.getOmhullende().getMaximumX() > MAX_X
