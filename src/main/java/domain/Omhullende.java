@@ -7,7 +7,7 @@ public class Omhullende {
 
     public Omhullende(Punt positieLinksBoven, int breedte, int hoogte) {
 
-        if(positieLinksBoven == null) throw new DomainException("pisitielinksboven is null");
+        if(positieLinksBoven == null) throw new DomainException("positielinksboven is null");
         if(breedte < 0) throw new DomainException("breedte is kleiner dan 0");
         if(hoogte < 0) throw new DomainException("hoogte is kleiner dan 0");
         this.positieLinksBoven = positieLinksBoven;
