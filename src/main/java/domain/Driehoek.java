@@ -81,9 +81,7 @@ public class Driehoek extends Vorm{
             }
         }
         return grootsteHoekpunt;
-
     }
-
     public Punt vindPuntKleinsteY(){
         ArrayList<Punt> hoekpunten = new ArrayList<>();
         hoekpunten.add(hoekpunt1);
