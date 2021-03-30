@@ -29,7 +29,6 @@ public class LijnstukApp {
                                 Integer.parseInt(invoerEindY.getText())));
                 tekening.voegToe(lijnStuk);
                 cleanUp(root);
-
             } catch (NumberFormatException e){
                 invoerEindY.clear();
                 foutenboodschap.setContentText("Invalid Y");
@@ -44,7 +43,6 @@ public class LijnstukApp {
 
     public LijnstukApp(GridPane root) {
         init(root, 0);
-
         invoerEindY.setOnAction(actionEvent ->{
             try{
                 Integer.parseInt(invoerEindY.getText());
@@ -57,11 +55,9 @@ public class LijnstukApp {
                                 Integer.parseInt(invoerEindY.getText())));
 
                         root.getChildren().clear();
-
                 Text uitvoer = new Text();
                 uitvoer.setText(lijnStuk.toString());
                 root.add(uitvoer, 0, 0);
-
             }catch (NumberFormatException e){
                 invoerEindY.clear();
                 foutenboodschap.setTitle("Warning");
@@ -73,7 +69,6 @@ public class LijnstukApp {
                 foutenboodschap.showAndWait();
             }
         } );
-
     }
 
     private void init(GridPane root, int teller) {
@@ -89,44 +84,9 @@ public class LijnstukApp {
         root.add(invoerStartXLabel, 0, teller);
         root.add(invoerStartX, 1, teller);
 
-        invoerStartX.setOnAction(eventIngaveBreedte ->{
-            try{
-                Integer.parseInt(invoerStartX.getText());
-                root.add(invoerStartYLabel , 0 ,teller + 1);
-                root.add(invoerStartY , 1 ,teller + 1);
-
-            }catch (NumberFormatException e){
-                invoerStartX.clear();
-                foutenboodschap.setContentText("Invalid X");
-                foutenboodschap.showAndWait();
-            }
-        });
-
-        invoerStartY.setOnAction(eventIngaveBreedte ->{
-            try{
-                Integer.parseInt(invoerStartY.getText());
-                root.add(invoerEindXLabel , 0 ,teller + 2);
-                root.add(invoerEindX , 1 ,teller + 2);
-
-
-            }catch (NumberFormatException e){
-                invoerStartY.clear();
-                foutenboodschap.setContentText("Invalid Y");
-                foutenboodschap.showAndWait();
-            }
-        } );
-
-        invoerEindX.setOnAction(actionEvent ->{
-            try{
-                Integer.parseInt(invoerEindX.getText());
-                root.add(invoerEindYLabel , 0 ,teller + 3);
-                root.add(invoerEindY , 1 ,teller + 3);
-            }catch (NumberFormatException e){
-                invoerEindX.clear();
-                foutenboodschap.setContentText("Invalid X");
-                foutenboodschap.showAndWait();
-            }
-        } );
+        Actionevent.normalevent(root , teller+1, invoerStartX , invoerStartY , invoerStartYLabel , foutenboodschap , "Coordinaat is invalid");
+        Actionevent.normalevent(root , teller+2, invoerStartY , invoerEindX , invoerEindXLabel , foutenboodschap , "Coordinaat is invalid");
+        Actionevent.normalevent(root , teller+3, invoerEindX , invoerEindY , invoerEindYLabel , foutenboodschap , "Coordinaat is invalid");
     }
 
     private void  cleanUp(GridPane root){
