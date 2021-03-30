@@ -54,6 +54,6 @@ public class Rechthoek extends Vorm {
 
     @Override
     public void teken(Pane root) {
-
+        Rechthoek r = new Rechthoek(getlinkerBovenhoek(), getBreedte(), getHoogte());
     }
 }

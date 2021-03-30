@@ -87,7 +87,7 @@ public class LijnStuk extends Vorm {
 
     @Override
     public void teken(Pane root) {
-
+        LijnStuk l = new LijnStuk(startPunt, eindPunt);
     }
 }
 

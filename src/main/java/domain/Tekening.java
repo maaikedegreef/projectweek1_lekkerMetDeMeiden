@@ -1,9 +1,12 @@
 package domain;
 
+import javafx.scene.layout.Pane;
+import ui.Drawable;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Tekening {
+public class Tekening implements Drawable {
 
     private String name;
     private ArrayList<Vorm> vormen = new ArrayList<>();
@@ -69,4 +72,11 @@ public class Tekening {
     public String toString() {
         return "Tekening{" + "name='" + name + '\'' + ", vormen=" + vormen + '}';
     }
+
+    @Override
+    public void teken(Pane root) {
+
+    }
 }
+
+

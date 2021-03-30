@@ -184,6 +184,6 @@ public class Driehoek extends Vorm{
 
     @Override
     public void teken(Pane root) {
-
+        Driehoek d = new Driehoek(hoekpunt1, hoekpunt2, hoekpunt3);
     }
 }
