@@ -14,7 +14,7 @@ public class Tekening {
 
     public Tekening(String naam) {
         if (isValidNaam(naam)) this.name = naam;
-        else throw new DomainException("Ongeldige naam");
+        else throw new IllegalArgumentException("Ongeldige naam");
     }
 
     public static boolean isValidNaam(String naamTekening) {
@@ -29,6 +29,7 @@ public class Tekening {
         if(vorm == null) return;
         vormen.add(vorm);
     }
+
     public Vorm getVorm(int index){
         if(index < 0) throw new IllegalArgumentException("de index is negatief");
         if(index >= vormen.size()) throw new IllegalArgumentException("de index  is negatief");

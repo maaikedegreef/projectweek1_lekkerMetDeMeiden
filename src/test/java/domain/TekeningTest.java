@@ -1,11 +1,9 @@
 package domain;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class TekeningTest {
     private Vorm gebouw;
@@ -20,6 +18,7 @@ public class TekeningTest {
     @Before
     public void setUp() {
         gebouw = new Rechthoek(new Punt(100, 200), 200, 180);
+        dak = new Driehoek(new Punt(100, 200), new Punt(300, 200), new Punt(200, 100));
         deur = new Rechthoek(new Punt(130, 280), 50,100);
         raam = new Rechthoek(new Punt(210, 220), 80, 60);
         deurknop = new Cirkel(new Punt(170, 320), 2);
@@ -66,7 +65,7 @@ public class TekeningTest {
     @Test
     public void equals_moet_false_teruggeven_als_parameter_null(){
         Tekening huis = createHuisZonderShouw();
-        assertFalse(huis.equals(null));
+        assertNotNull(huis);
     }
 
     @Test
@@ -98,6 +97,29 @@ public class TekeningTest {
         Tekening huisMetSchouw = createHuisMetSchouw();
         huisMetSchouw.verwijder(schouwNietInTekening);
         assertTrue(huis.equals(huisMetSchouw));
+    }
+
+    @Test
+    public void voegToe_voegtEenVormToe() {
+        Tekening huis = createHuisZonderShouw();
+        int size = huis.getAantalVormen();
+        huis.voegToe(new LijnStuk(new Punt(0,0), new Punt(0,1)));
+        assertEquals(size+1, huis.getAantalVormen());
+    }
+
+    @Test
+    public void verwijderen_verwijdertEen() {
+        Tekening huis = createHuisZonderShouw();
+        int size = huis.getAantalVormen();
+        huis.verwijder(dak);
+        assertEquals(size-1, huis.getAantalVormen());
+    }
+
+    @Test
+    public void getVorm() {
+        Tekening t = new Tekening("t");
+        t.voegToe(dak);
+        assertEquals(t.getVorm(0), dak);
     }
 
 
