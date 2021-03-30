@@ -63,6 +63,47 @@ public class Driehoek extends Vorm{
         return kleinsteHoekpunt;
     }
 
+
+    public Punt vindPuntGrootsteY(){
+        ArrayList<Punt> hoekpunten = new ArrayList<>();
+        hoekpunten.add(hoekpunt1);
+        hoekpunten.add(hoekpunt2);
+        hoekpunten.add(hoekpunt3);
+
+        Punt grootsteHoekpunt = hoekpunten.get(0);
+        for (Punt p: hoekpunten){
+            if (p.getY() == grootsteHoekpunt.getY()){
+                if (p.getY() > grootsteHoekpunt.getY()){
+                    grootsteHoekpunt = p;
+                }
+            } else if (p.getY() > grootsteHoekpunt.getY()){
+                grootsteHoekpunt = p;
+            }
+        }
+        return grootsteHoekpunt;
+
+    }
+
+    public Punt vindPuntKleinsteY(){
+        ArrayList<Punt> hoekpunten = new ArrayList<>();
+        hoekpunten.add(hoekpunt1);
+        hoekpunten.add(hoekpunt2);
+        hoekpunten.add(hoekpunt3);
+
+        Punt kleinsteHoekpunt = hoekpunten.get(0);
+        for (Punt p: hoekpunten){
+            if (p.getY() == kleinsteHoekpunt.getY()){
+                if (p.getY() < kleinsteHoekpunt.getY()){
+                    kleinsteHoekpunt = p;
+                }
+            } else if (p.getY() < kleinsteHoekpunt.getY()){
+                kleinsteHoekpunt = p;
+            }
+        }
+        return kleinsteHoekpunt;
+
+    }
+
     public void setHoekpunt1(Punt hoekpunt1) {
         if (hoekpunt1 == null) {
             throw new DomainException("Hoekpunt kan niet leeg zijn.");
@@ -122,6 +163,23 @@ public class Driehoek extends Vorm{
 
     @Override
     public Omhullende getOmhullende() {
-        return null;
+        return new Omhullende(getLinksBoven(),getBreedte(), getHoogte());
     }
+
+
+    public Punt getLinksBoven() {
+        this.sorteerHoekpunten();
+        return new Punt(hoekpunt1.getX(), vindPuntGrootsteY().getY());
+    }
+
+    public int getBreedte() {
+        this.sorteerHoekpunten();
+        return (hoekpunt3.getX() - hoekpunt1.getX());
+    }
+
+    public int getHoogte() {
+        return (getLinksBoven().getY() - vindPuntKleinsteY().getY());
+    }
+
+
 }
