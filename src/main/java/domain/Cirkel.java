@@ -57,6 +57,8 @@ public class Cirkel extends Vorm {
     @Override
     public void teken(Pane root) {
         Cirkel c = new Cirkel(new Punt(middelPunt.getX(), middelPunt.getY()), radius);
+        Circle circle = new Circle(c.getMiddelPunt().getX(), c.getMiddelPunt().getY(), c.getRadius());
+        root.getChildren().add(circle);
     }
 }
 

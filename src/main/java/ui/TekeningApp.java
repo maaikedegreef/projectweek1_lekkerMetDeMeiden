@@ -58,6 +58,9 @@ public class TekeningApp {
                         uitvoer.setPrefRowCount(tekening.getAantalVormen() * 2);
                         uitvoer.setText(tekening.toString());
                         uitvoer.setVisible(true);
+
+                        TekenVensterApp tapp = new TekenVensterApp(root, tekening);
+                        tapp.teken(root);
                     }
                     case "stop" -> System.exit(0);
                 }
