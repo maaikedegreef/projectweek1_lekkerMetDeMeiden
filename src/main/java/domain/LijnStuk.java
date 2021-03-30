@@ -42,10 +42,44 @@ public class LijnStuk extends Vorm {
                 " - eindPunt: " + eindPunt;
     }
 
+    private int laagsteX;
+    private int hoogsteY;
+    public Punt getLinksBoven() {
+
+        if (startPunt.getX() < eindPunt.getX()) laagsteX = startPunt.getX();
+        else {
+            laagsteX = eindPunt.getX();
+        }
+        if (startPunt.getY() > eindPunt.getY()) hoogsteY = startPunt.getY();
+        else {
+            hoogsteY = eindPunt.getY();
+        }
+        return new Punt(laagsteX, hoogsteY);
+    }
+
+    public boolean isDalend() {
+        if (startPunt.getY() > eindPunt.getY()) return true;
+        return false;
+    }
+
+    public int getbreedte() {
+        int breedte;
+        breedte = eindPunt.getX() - startPunt.getX();
+        return breedte;
+    }
+
+    public int getHoogte() {
+        int hoogte;
+        if (isDalend()) hoogte = startPunt.getY() - eindPunt.getY();
+        else {
+            hoogte = eindPunt.getY() - startPunt.getY();
+        }
+        return hoogte;
+    }
 
     @Override
     public Omhullende getOmhullende() {
-        return null;
+        return new Omhullende(getLinksBoven(), getbreedte(), getHoogte());
     }
 }
 
