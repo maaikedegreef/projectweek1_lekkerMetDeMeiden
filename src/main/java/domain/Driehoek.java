@@ -124,4 +124,9 @@ public class Driehoek extends Vorm{
     public Omhullende getOmhullende() {
         return null;
     }
+
+    //    @Override
+//    public Omhullende getOmhullende() {
+//        return new Omhullende(new Punt(hoekpunten[0].getX(), hoekpunten[0].gety()), Math.sqrt(Math.pow((hoekpunt1.getX()-hoekpunt2.getX()), 2) + Math.pow((hoekpunt1.getY()-hoekpunt2.getY()), 2)), Math.sqrt(Math.pow((hoekpunt2.getX()-hoekpunt2.getX()), 2) + Math.pow((hoekpunt1.getY()-hoekpunt2.getY()), 2)));
+//    }
 }

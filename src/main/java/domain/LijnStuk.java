@@ -41,5 +41,11 @@ public class LijnStuk extends Vorm {
                 "startPunt: " + startPunt +
                 " - eindPunt: " + eindPunt;
     }
+
+
+    @Override
+    public Omhullende getOmhullende() {
+        return null;
+    }
 }
 
