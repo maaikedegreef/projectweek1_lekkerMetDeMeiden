@@ -4,6 +4,8 @@ package domain;
 
         import org.junit.Test;
 
+        import java.util.ArrayList;
+
 public class DriehoekTest {
     private Punt punt1 = new Punt(10, 20);
     private Punt zelfdeAlsPunt1 = new Punt(10, 20);
@@ -65,5 +67,26 @@ public class DriehoekTest {
         Driehoek drieHoek = new Driehoek(punt1, punt2, punt3);
         assertFalse(drieHoek.equals(null));
     }
+
+    @Test
+    public void sorteerhoekpunten_moet_hoekpunten_sorteren(){
+        Driehoek drieHoek = new Driehoek(punt3, punt2, punt1);
+        drieHoek.sorteerHoekpunten();
+        assertEquals(drieHoek.getHoekPunt1(),punt1);
+        assertEquals(drieHoek.getHoekPunt2(),punt2);
+        assertEquals(drieHoek.getHoekPunt3(),punt3);
+    }
+
+    @Test
+    public void vindKleinsteHoekPunt_geeft_kleinste_hoekpunt(){
+        Driehoek drieHoek = new Driehoek(punt3, punt2, punt1);
+        ArrayList<Punt> hoekpunten = new ArrayList<>();
+        hoekpunten.add(punt1);
+        hoekpunten.add(punt2);
+        hoekpunten.add(punt3);
+        assertEquals(drieHoek.vindKleinsteHoekPunt(hoekpunten),punt1);
+    }
+
+
 
 }
