@@ -1,6 +1,7 @@
 package domain;
 
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Line;
 
 import java.util.Objects;
 
@@ -88,6 +89,8 @@ public class LijnStuk extends Vorm {
     @Override
     public void teken(Pane root) {
         LijnStuk l = new LijnStuk(startPunt, eindPunt);
+        Line line = new Line(l.getStartPunt().getX(), l.getStartPunt().getY(), l.getEindPunt().getX(), l.getEindPunt().getY());
+        root.getChildren().add(line);
     }
 }
 

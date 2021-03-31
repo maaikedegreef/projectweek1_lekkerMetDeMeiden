@@ -1,6 +1,7 @@
 package domain;
 
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
 import ui.Drawable;
 
 public class Rechthoek extends Vorm {
@@ -55,5 +56,7 @@ public class Rechthoek extends Vorm {
     @Override
     public void teken(Pane root) {
         Rechthoek r = new Rechthoek(getlinkerBovenhoek(), getBreedte(), getHoogte());
+        Rectangle rectangle = new Rectangle(r.getlinkerBovenhoek().getX(), r.getlinkerBovenhoek().getY(), r.getBreedte(), r.getHoogte());
+        root.getChildren().add(rectangle);
     }
 }

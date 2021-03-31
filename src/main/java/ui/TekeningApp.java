@@ -23,6 +23,7 @@ public class TekeningApp {
 
         opties = FXCollections.observableArrayList("Vorm maken","Tekening tonen","stop","");
         keuzeMenu = new ComboBox<>(opties);
+        keuzeMenu.setValue("Kies actie");
 
         root.add(naamTekeningLabel,0,0);
         root.add(invoerNaamTekening,1,0);
@@ -57,6 +58,9 @@ public class TekeningApp {
                         uitvoer.setPrefRowCount(tekening.getAantalVormen() * 2);
                         uitvoer.setText(tekening.toString());
                         uitvoer.setVisible(true);
+
+                        TekenVensterApp tapp = new TekenVensterApp(root, tekening);
+                        tapp.teken(root);
                     }
                     case "stop" -> System.exit(0);
                 }

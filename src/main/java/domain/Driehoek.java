@@ -1,6 +1,8 @@
 package domain;
 
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Polyline;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -185,5 +187,11 @@ public class Driehoek extends Vorm{
     @Override
     public void teken(Pane root) {
         Driehoek d = new Driehoek(hoekpunt1, hoekpunt2, hoekpunt3);
+        Polyline polyLine = new Polyline();
+        polyLine.setFill(Color.RED);
+        polyLine.setStroke(Color.BLACK);
+        polyLine.getPoints().addAll((double) d.getHoekPunt1().getX(), (double) d.getHoekPunt1().getY(), (double) d.getHoekPunt2().getX(),
+                (double) d.getHoekPunt2().getY(), (double) d.getHoekPunt3().getX(), (double) d.getHoekPunt3().getY());
+        root.getChildren().add(polyLine);
     }
 }
