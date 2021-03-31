@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 
 public class VormMakenApp {
     private GridPane root;
@@ -15,7 +16,7 @@ public class VormMakenApp {
         this.root = root;
         mogelijkeFiguren = FXCollections.observableArrayList("Cirkel","Rechthoek","Lijnstuk","Driehoek");
         keuzeMenu = new ComboBox(mogelijkeFiguren);
-
+        keuzeMenu.setValue("Kies vorm");
         root.add(keuzeMenu,0,1);
         keuzeMenu.setOnAction(eventKeuze -> {
                     if (keuzeMenu.getValue() != null) {

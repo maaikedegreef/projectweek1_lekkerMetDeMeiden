@@ -1,7 +1,8 @@
 package domain;
-
 import javafx.scene.paint.Color;
 import ui.Drawable;
+
+import java.util.Objects;
 
 public abstract class Vorm implements Drawable {
     private Color kleur;
@@ -10,11 +11,7 @@ public abstract class Vorm implements Drawable {
 
     }
     public Vorm(Color kleur) {
-        if (kleur == null) { kleur = Color.WHITE;
-        }
-        else {
-            this.kleur = kleur;
-        }
+        this.kleur = Objects.requireNonNullElse(kleur, Color.WHITE);
     }
 
     public Color getKleur() {
@@ -24,7 +21,6 @@ public abstract class Vorm implements Drawable {
     public void setKleur(Color kleur) {
         this.kleur = kleur;
     }
-
 
     public abstract Omhullende getOmhullende();
 

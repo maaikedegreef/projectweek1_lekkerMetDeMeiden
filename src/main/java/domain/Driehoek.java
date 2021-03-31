@@ -1,6 +1,9 @@
 package domain;
 
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Polyline;
+import javafx.scene.text.FontSmoothingType;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,6 +12,7 @@ public class Driehoek extends Vorm{
     private Punt hoekpunt1, hoekpunt2, hoekpunt3;
 
     public Driehoek(Punt hoekpunt1, Punt hoekpunt2, Punt hoekpunt3) {
+        super(null);
         if (hoekpunt1==null||hoekpunt2==null||hoekpunt3==null) throw new DomainException("Punten mogen niet leeg zijn");
         if (puntenVallenSamen(hoekpunt1, hoekpunt2, hoekpunt3)) throw new DomainException("Punten mogen niet samenvallen!");
         if (liggenOp1Lijn(hoekpunt1, hoekpunt2, hoekpunt3)) throw new DomainException("Punten mogen niet op 1 lijn liggen!");
@@ -185,5 +189,11 @@ public class Driehoek extends Vorm{
     @Override
     public void teken(Pane root) {
         Driehoek d = new Driehoek(hoekpunt1, hoekpunt2, hoekpunt3);
+        Polyline polyLine = new Polyline();
+        polyLine.setFill(this.getKleur());
+        polyLine.setStroke(Color.BLACK);
+        polyLine.getPoints().addAll((double) d.getHoekPunt1().getX(), (double) d.getHoekPunt1().getY(), (double) d.getHoekPunt2().getX(),
+                (double) d.getHoekPunt2().getY(), (double) d.getHoekPunt3().getX(), (double) d.getHoekPunt3().getY(), (double) d.getHoekPunt1().getX(), (double) d.getHoekPunt1().getY());
+        root.getChildren().add(polyLine);
     }
 }

@@ -33,4 +33,13 @@ public class HintLetter {
     public boolean isGeraden(){
         return isGeraden;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        HintLetter that = (HintLetter) o;
+        return (letter == that.letter);
+    }
 }
