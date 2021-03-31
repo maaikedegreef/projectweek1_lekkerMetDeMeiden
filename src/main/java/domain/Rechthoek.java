@@ -1,6 +1,7 @@
 package domain;
 
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import ui.Drawable;
 
@@ -9,7 +10,8 @@ public class Rechthoek extends Vorm {
    private int breedte , hoogte;
    private Punt linkerBovenhoek;
 
-    public Rechthoek( Punt linkerBovenHoek, int breedte, int hoogte) {
+    public Rechthoek(Punt linkerBovenHoek, int breedte, int hoogte) {
+        super(null);
         if(linkerBovenHoek == null) throw new DomainException("linkerbovenhoek is null");
         if(breedte < 0) throw new DomainException("breedte is kleiner dan 0");
         if(breedte == 0) throw new DomainException("breedte is 0");
@@ -57,6 +59,8 @@ public class Rechthoek extends Vorm {
     public void teken(Pane root) {
         Rechthoek r = new Rechthoek(getlinkerBovenhoek(), getBreedte(), getHoogte());
         Rectangle rectangle = new Rectangle(r.getlinkerBovenhoek().getX(), r.getlinkerBovenhoek().getY(), r.getBreedte(), r.getHoogte());
+        rectangle.setFill(this.getKleur());
+        rectangle.setStroke(Color.BLACK);
         root.getChildren().add(rectangle);
     }
 }

@@ -11,6 +11,7 @@ public class Cirkel extends Vorm {
     private int radius;
 
     public Cirkel(Punt middelPunt, int radius){
+        super(null);
         setMiddelpunt(middelPunt);
         setRadius(radius);
     }
@@ -58,6 +59,8 @@ public class Cirkel extends Vorm {
     public void teken(Pane root) {
         Cirkel c = new Cirkel(new Punt(middelPunt.getX(), middelPunt.getY()), radius);
         Circle circle = new Circle(c.getMiddelPunt().getX(), c.getMiddelPunt().getY(), c.getRadius());
+        circle.setFill(this.getKleur());
+        circle.setStroke(Color.BLACK);
         root.getChildren().add(circle);
     }
 }
