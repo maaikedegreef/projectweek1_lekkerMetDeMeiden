@@ -50,17 +50,17 @@ public class TekeningApp {
 
                 switch (keuzeMenu.getValue()) {
                     case "Vorm maken" -> {
-                        keuzeMenu.setValue("");
+
                         new VormMakenApp(root, tekening);
                     }
                     case "Tekening tonen" -> {
-                        keuzeMenu.setValue("");
+
                         uitvoer.setPrefRowCount(tekening.getAantalVormen() * 2);
                         uitvoer.setText(tekening.toString());
                         uitvoer.setVisible(true);
 
-                        TekenVensterApp tapp = new TekenVensterApp(root, tekening);
-                        tapp.teken(root);
+                        new TekenVensterApp(root, tekening);
+
                     }
                     case "stop" -> System.exit(0);
                 }
