@@ -19,10 +19,6 @@ public class Tekening implements Drawable {
         else throw new IllegalArgumentException("Ongeldige naam");
     }
 
-    public Tekening() {
-        this("HangMan");
-    }
-
     public static boolean isValidNaam(String naamTekening) {
        return (naamTekening != null && !naamTekening.isBlank());
     }
@@ -44,8 +40,8 @@ public class Tekening implements Drawable {
     }
 
     public Vorm getVorm(int index){
-        if(index < 0) throw new IllegalArgumentException("de index is negatief");
-        if(index >= vormen.size()) throw new IllegalArgumentException("de index  is negatief");
+        if(index < 0) throw new DomainException("de index is negatief");
+        if(index >= vormen.size()) throw new DomainException("de index  is negatief");
         return vormen.get(index);
     }
     public int getAantalVormen(){
@@ -78,6 +74,6 @@ public class Tekening implements Drawable {
 
     @Override
     public void teken(Pane root) {
-        vormen.forEach(x -> x.teken(root));
+        vormen.forEach(x -> {if (x.isZichtbaar()) x.teken(root);});
     }
 }
