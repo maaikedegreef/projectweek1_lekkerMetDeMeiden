@@ -4,6 +4,7 @@ import javafx.scene.layout.Pane;
 import ui.Drawable;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Tekening implements Drawable {
 
@@ -74,6 +75,8 @@ public class Tekening implements Drawable {
 
     @Override
     public void teken(Pane root) {
-        vormen.forEach(x -> x.teken(root));
+
     }
 }
+
+

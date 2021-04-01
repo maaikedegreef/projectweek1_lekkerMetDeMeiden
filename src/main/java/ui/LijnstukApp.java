@@ -90,6 +90,13 @@ public class LijnstukApp {
     }
 
     private void  cleanUp(GridPane root){
-        root.getChildren().removeAll(invoerStartXLabel, invoerStartX, invoerStartYLabel, invoerStartY, invoerEindXLabel, invoerEindX, invoerEindYLabel, invoerEindY);
+        root.getChildren().remove(invoerStartXLabel);
+        root.getChildren().remove(invoerStartX);
+        root.getChildren().remove(invoerStartYLabel);
+        root.getChildren().remove(invoerStartY);
+        root.getChildren().remove(invoerEindXLabel);
+        root.getChildren().remove(invoerEindX);
+        root.getChildren().remove(invoerEindYLabel);
+        root.getChildren().remove(invoerEindY);
     }
 }

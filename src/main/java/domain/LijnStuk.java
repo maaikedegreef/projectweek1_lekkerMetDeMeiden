@@ -1,8 +1,6 @@
 package domain;
 
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
 
 import java.util.Objects;
 
@@ -11,7 +9,6 @@ public class LijnStuk extends Vorm {
     private Punt startPunt,eindPunt;
 
     public LijnStuk(Punt startPunt, Punt eindPunt) {
-        super(null);
         setStartEnEindPunt(startPunt, eindPunt);
     }
 
@@ -47,14 +44,24 @@ public class LijnStuk extends Vorm {
                 " - eindPunt: " + eindPunt;
     }
 
+    private int laagsteX;
+    private int hoogsteY;
     public Punt getLinksBoven() {
-        int laagsteX = Math.min(startPunt.getX(), eindPunt.getX());
-        int laagsteY = Math.min(startPunt.getY(), eindPunt.getY());
-        return new Punt(laagsteX, laagsteY);
+
+        if (startPunt.getX() < eindPunt.getX()) laagsteX = startPunt.getX();
+        else {
+            laagsteX = eindPunt.getX();
+        }
+        if (startPunt.getY() > eindPunt.getY()) hoogsteY = startPunt.getY();
+        else {
+            hoogsteY = eindPunt.getY();
+        }
+        return new Punt(laagsteX, hoogsteY);
     }
 
     public boolean isDalend() {
-        return startPunt.getY() > eindPunt.getY();
+        if (startPunt.getY() > eindPunt.getY()) return true;
+        return false;
     }
 
     public int getbreedte() {
@@ -81,9 +88,6 @@ public class LijnStuk extends Vorm {
     @Override
     public void teken(Pane root) {
         LijnStuk l = new LijnStuk(startPunt, eindPunt);
-        Line line = new Line(l.getStartPunt().getX(), l.getStartPunt().getY(), l.getEindPunt().getX(), l.getEindPunt().getY());
-        line.setFill(Color.BLUE);
-        root.getChildren().add(line);
     }
 }
 
