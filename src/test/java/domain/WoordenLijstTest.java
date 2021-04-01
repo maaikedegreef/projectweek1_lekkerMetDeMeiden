@@ -2,10 +2,8 @@ package domain;
 
 import static org.junit.Assert.*;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-import db.WoordenLezer;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -80,8 +78,7 @@ public class WoordenLijstTest {
         woorden.voegToe("Greg");
         woorden.voegToe("Niels");
         woorden.voegToe("Kevin");
-        assertTrue(woorden.getRandomWoord().equals("Greg") || woorden.getRandomWoord().equals("Niels") || woorden.getRandomWoord().equals("Kevin"));
+        String woord = woorden.getRandomWoord();
+        assertTrue(woord.equals("Greg")  || woord.equals("Niels") || woord.equals("Kevin") );
     }
-
-
 }
