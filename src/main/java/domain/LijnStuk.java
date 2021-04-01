@@ -47,31 +47,29 @@ public class LijnStuk extends Vorm {
                 " - eindPunt: " + eindPunt;
     }
 
-    public Punt getLinksBoven() {
-        int laagsteX = Math.min(startPunt.getX(), eindPunt.getX());
-        int laagsteY = Math.min(startPunt.getY(), eindPunt.getY());
-        return new Punt(laagsteX, laagsteY);
+    private Punt getLinksBoven() {
+        int x,y;
+        if (!this.isDalend()) {
+            x = Math.min(startPunt.getX(), eindPunt.getX());
+            y = Math.max(startPunt.getY(), eindPunt.getY());
+        } else {
+            x = startPunt.getX();
+            y = eindPunt.getY();
+        }
+        return new Punt(x, y);
+    }
+
+    private int getbreedte() {
+        return Math.abs(eindPunt.getX() - startPunt.getX());
+    }
+
+    public int getHoogte() {
+                return Math.abs(eindPunt.getY() - startPunt.getY());
     }
 
     public boolean isDalend() {
         return startPunt.getY() > eindPunt.getY();
     }
-
-    public int getbreedte() {
-        int breedte;
-        breedte = eindPunt.getX() - startPunt.getX();
-        return breedte;
-    }
-
-    public int getHoogte() {
-        int hoogte;
-        if (isDalend()) hoogte = startPunt.getY() - eindPunt.getY();
-        else {
-            hoogte = eindPunt.getY() - startPunt.getY();
-        }
-        return hoogte;
-    }
-
 
     @Override
     public Omhullende getOmhullende() {
@@ -80,9 +78,8 @@ public class LijnStuk extends Vorm {
 
     @Override
     public void teken(Pane root) {
-        LijnStuk l = new LijnStuk(startPunt, eindPunt);
-        Line line = new Line(l.getStartPunt().getX(), l.getStartPunt().getY(), l.getEindPunt().getX(), l.getEindPunt().getY());
-        line.setFill(Color.BLUE);
+        Line line = new Line(this.getStartPunt().getX(), this.getStartPunt().getY(), this.getEindPunt().getX(), this.getEindPunt().getY());
+        line.setFill(this.getKleur());
         root.getChildren().add(line);
     }
 }
