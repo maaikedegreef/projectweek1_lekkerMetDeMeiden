@@ -13,7 +13,7 @@ public class WoordenLezer {
     public void leeswoorden() throws FileNotFoundException {
         ArrayList<String> ingescandewoorden = new ArrayList<>();
 
-        Scanner scanner = new Scanner(new File("src/main/resources/hangman.txt"));
+        Scanner scanner = new Scanner(new File("src/main/java/db/hangman.txt"));
         while(scanner.hasNextLine()){
             String line = scanner.nextLine();
             ingelezenwoorden.add(line);
