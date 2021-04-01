@@ -5,7 +5,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 
 public class TekeningApp {
   private Label naamTekeningLabel;
@@ -16,19 +15,14 @@ public class TekeningApp {
 
     private TextArea uitvoer;
     private Tekening tekening;
-    private Pane pane;
-    private GridPane gridPane;
 
     public TekeningApp(GridPane root) {
         uitvoer = new TextArea();
         naamTekeningLabel = new Label("Geef de naam van je tekening: ");
         invoerNaamTekening = new TextField();
-        pane = new Pane();
-        gridPane = new GridPane();
 
-        opties = FXCollections.observableArrayList("Vorm maken","Tekening tonen","stop");
+        opties = FXCollections.observableArrayList("Vorm maken","Tekening tonen","stop","");
         keuzeMenu = new ComboBox<>(opties);
-        keuzeMenu.setValue("Kies actie");
 
         root.add(naamTekeningLabel,0,0);
         root.add(invoerNaamTekening,1,0);
@@ -42,7 +36,7 @@ public class TekeningApp {
 
                 root.getChildren().clear();
                 root.add(keuzeMenu,0,0);
-                root.add(uitvoer, 1, 0);
+                root.add(uitvoer, 3, 0);
 
                 uitvoer.setPrefRowCount(1);
                 uitvoer.setPrefColumnCount(40);
@@ -50,26 +44,20 @@ public class TekeningApp {
             }});
 
         keuzeMenu.setOnAction(eventKeuze -> {
-
             uitvoer.setVisible(false);
             if (keuzeMenu.getValue() != null) {
+
                 switch (keuzeMenu.getValue()) {
                     case "Vorm maken" -> {
-                        root.getChildren().remove(pane);
-                        gridPane = new GridPane();
-                        root.add(gridPane, 0, 1);
-                        new VormMakenApp(gridPane, tekening);
+                        keuzeMenu.setValue("");
+                        new VormMakenApp(root, tekening);
                     }
-
                     case "Tekening tonen" -> {
-                        root.getChildren().remove(gridPane);
+                        keuzeMenu.setValue("");
                         uitvoer.setPrefRowCount(tekening.getAantalVormen() * 2);
                         uitvoer.setText(tekening.toString());
                         uitvoer.setVisible(true);
-                        root.add(pane, 0, 1);
-                        new TekenVensterApp(pane, tekening);
                     }
-
                     case "stop" -> System.exit(0);
                 }
             }

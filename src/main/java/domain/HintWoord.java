@@ -55,7 +55,7 @@ public class HintWoord {
     public String toString() {
         String res = "";
         for (int i = 0; i < hintwoord.length; i++) {
-            if (hintwoord[i].equals(' ')) {
+            if (hintwoord[i].equals(" ")) {
                 res += "  ";
             } else {
                 res += " " + hintwoord[i].toChar();
