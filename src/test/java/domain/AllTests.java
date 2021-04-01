@@ -9,7 +9,9 @@ import org.junit.runners.Suite.SuiteClasses;
 import static org.junit.Assert.*;
 
 @RunWith(Suite.class)
-@SuiteClasses({ PuntTest.class, SpelerTest.class})
+@SuiteClasses({ PuntTest.class, SpelerTest.class , CirkelTest.class , DriehoekTest.class , HangManTest.class , HintLetterTest.class , HintWoord.class,
+LijnStukTest.class, OmhullendeTest.class , PuntTest.class , RechthoekTest.class , SpelerTest.class , TekeningHangManTest.class,
+TekeningTest.class , WoordenLijstTest.class})
 public class AllTests {
         private Punt geldigMiddelpunt;
         private Punt anderMiddelpunt;

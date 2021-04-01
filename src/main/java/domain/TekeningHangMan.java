@@ -56,7 +56,7 @@ public class TekeningHangMan extends Tekening {
         }
         return aantal;
     }
-
+    @Override
     public void voegToe(Vorm vorm) {
         throw new DomainException("je mag geen vormen toevoegen aan de hangman");
     }
