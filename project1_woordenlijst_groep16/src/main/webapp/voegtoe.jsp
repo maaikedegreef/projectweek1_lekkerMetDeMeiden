@@ -24,8 +24,7 @@
 </header>
 <main>
     <h1>Woord toevoegen</h1>
-    <!-- NOVALIDATE NIET VERGETEN WEG TE DOEN!!!!!!!!!!!!-->
-    <form action="Servlet?command=add" method="POST" novalidate>
+    <form action="Servlet?command=add" method="POST">
         <label for="WoordInhoud">Woord:</label>
         <input id="WoordInhoud" class="tekstinput" name="WoordInhoud" type="text" required>
         <br>
