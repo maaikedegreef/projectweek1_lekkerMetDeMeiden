@@ -19,6 +19,10 @@ public class Tekening implements Drawable {
         else throw new IllegalArgumentException("Ongeldige naam");
     }
 
+    public Tekening() {
+        this("HangMan");
+    }
+
     public static boolean isValidNaam(String naamTekening) {
        return (naamTekening != null && !naamTekening.isBlank());
     }
