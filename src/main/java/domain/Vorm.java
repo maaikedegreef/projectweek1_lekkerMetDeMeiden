@@ -6,15 +6,17 @@ import java.util.Objects;
 
 public abstract class Vorm implements Drawable {
     private Color kleur;
-    private boolean isZichtbaar;
+    private boolean zichtbaar = false;
 
     public Vorm(){
 
     }
 
     public boolean isZichtbaar() {
-        boolean ans = true;
-        return true;
+      return zichtbaar;
+    }
+    public void setZichtbaar(boolean status){
+        this.zichtbaar = status;
     }
 
     public Vorm(Color kleur) {
