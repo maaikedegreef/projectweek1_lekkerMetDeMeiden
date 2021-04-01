@@ -85,7 +85,7 @@ public class CirkelApp {
             catch(NumberFormatException e){
                 invoerX.clear();
                 foutenboodschap.setTitle("Warning");
-                foutenboodschap.setContentText("x coÃ¶rdinaat van middelpunt van de cirkel moet een geheel getal zijn");
+                foutenboodschap.setContentText("x coördinaat van middelpunt van de cirkel moet een geheel getal zijn");
                 foutenboodschap.showAndWait();
             }
         });
@@ -98,7 +98,7 @@ public class CirkelApp {
             } catch (NumberFormatException e){
                 invoerY.clear();
                 foutenboodschap.setTitle("Warning");
-                foutenboodschap.setContentText("y coÃ¶rdinaat van middelpunt van de cirkel moet een geheel getal zijn");
+                foutenboodschap.setContentText("y coördinaat van middelpunt van de cirkel moet een geheel getal zijn");
                 foutenboodschap.showAndWait();
             }
         });
