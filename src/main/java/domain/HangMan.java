@@ -18,7 +18,8 @@ public class HangMan {
         this.speler = speler;
         this.tekeningHangMan = new TekeningHangMan();
         this.woordenLijst = woordenLijst;
-        this.hintWoord = new HintWoord(woordenLijst.getRandomWoord());
+        String woord = woordenLijst.getRandomWoord();
+        this.hintWoord = new HintWoord(woord);
         this.gewonnen=false;
         this.gameOver=false;
     }

@@ -3,7 +3,6 @@ package ui;
 import domain.HangMan;
 import domain.Speler;
 import domain.WoordenLijst;
-//import domain.TekenVenster;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;

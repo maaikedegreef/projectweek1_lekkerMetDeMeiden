@@ -5,7 +5,6 @@ public class HintLetter {
     private boolean isGeraden;
 
     public HintLetter(char letter) {
-        if (letter==' ') throw new DomainException("Letter mag niet leeg zijn.");
         this.letter = java.lang.Character.toLowerCase(letter);
         isGeraden = false;
     }
