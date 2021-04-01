@@ -8,6 +8,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet("/Servlet")
 public class Servlet extends HttpServlet {
@@ -42,11 +43,24 @@ public class Servlet extends HttpServlet {
             case "add":
                 destination = add(request, response);
                 break;
-
+            case "download":
+                destination = download(request, response);
+                break;
             default:
-                destination = home(request, response);
+                destination = overzicht(request, response);
         }
         request.getRequestDispatcher(destination).forward(request, response);
+    }
+
+    private String download(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String filename = "woorden.txt";
+        response.setContentType("APPLICATION/OCTET-STREAM");
+        response.setHeader("Content-Disposition", "attachment; filename=\"" + filename +
+                "\"");
+        PrintWriter out = response.getWriter();
+        for (Woord woord : woordenlijst.getWoorden()) out.println(woord.getInhoud());
+        out.close();
+        return overzicht(request, response);
     }
 
     private String add(HttpServletRequest request, HttpServletResponse response) {

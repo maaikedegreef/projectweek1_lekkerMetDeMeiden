@@ -28,29 +28,29 @@
 </header>
 <main>
     <h1>Woordenlijst</h1>
-    <section>
-        <table>
-            <tr>
-                <th>#</th>
-                <th>Woord</th>
-                <th>Niveau</th>
-            </tr>
-                <%  ArrayList<Woord> woordenlijst = (ArrayList<Woord>) request.getAttribute("woordenlijst");
-                    for (int i = 0; i < woordenlijst.size(); ++i) { %>
-            <tr>
-                <td><%=i+1%></td>
-                <td><%=woordenlijst.get(i).getInhoud()%></td>
-                <td>
-                    <%  String niveau = woordenlijst.get(i).getNiveau();
-                        if (niveau == null || niveau.isEmpty()) {%>
+    <a href="Servlet?command=download">Download woordenlijst</a>
+    <br><br>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Woord</th>
+            <th>Niveau</th>
+        </tr>
+            <%  ArrayList<Woord> woordenlijst = (ArrayList<Woord>) request.getAttribute("woordenlijst");
+                for (int i = 0; i < woordenlijst.size(); ++i) { %>
+        <tr>
+            <td><%=i+1%></td>
+            <td><%=woordenlijst.get(i).getInhoud()%></td>
+            <td>
+                <%  String niveau = woordenlijst.get(i).getNiveau();
+                    if (niveau == null || niveau.isEmpty()) {%>
 
-                    <% } else {%>
-                        <%=niveau%>
-                    <% }}%>
-                </td>
-            </tr>
-        </table>
-    </section>
+                <% } else {%>
+                    <%=niveau%>
+                <% }}%>
+            </td>
+        </tr>
+    </table>
 </main>
 </body>
 </html>
