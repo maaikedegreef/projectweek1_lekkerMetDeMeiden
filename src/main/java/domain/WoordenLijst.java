@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class WoordenLijst {
 
-    private ArrayList<String> woorden = new ArrayList<>();
+    private ArrayList<String> woorden;
 
     public WoordenLijst(){
-
+        this.woorden = new ArrayList<>();
     }
 
     public void voegToe(String woord) {

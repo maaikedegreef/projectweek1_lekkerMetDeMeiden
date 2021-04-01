@@ -1,26 +1,26 @@
 package db;
+import domain.WoordenLijst;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-import java.util.ArrayList;
 
 public class WoordenLezer {
+    private Scanner scanner;
 
-    private ArrayList<String> ingelezenwoorden = new ArrayList<>();
-    public WoordenLezer(){
-
+    public WoordenLezer(String documentNaam) throws FileNotFoundException {
+        String pad = "src/main/resources/"+documentNaam;
+        File file = new File(pad);
+        Scanner scanner = new Scanner(file);
+        this.scanner = scanner;
     }
-    public void leeswoorden() throws FileNotFoundException {
-        ArrayList<String> ingescandewoorden = new ArrayList<>();
 
-        Scanner scanner = new Scanner(new File("src/main/resources/hangman.txt"));
+    public WoordenLijst lees() throws FileNotFoundException {
+        WoordenLijst woordenLijst = new WoordenLijst();
         while(scanner.hasNextLine()){
             String line = scanner.nextLine();
-            ingelezenwoorden.add(line);
+            woordenLijst.voegToe(line);
         }
-    }
-
-    public ArrayList<String> getIngelezenwoorden() {
-        return ingelezenwoorden;
+        return woordenLijst;
     }
 }
