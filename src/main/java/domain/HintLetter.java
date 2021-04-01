@@ -5,6 +5,7 @@ public class HintLetter {
     private boolean isGeraden;
 
     public HintLetter(char letter) {
+        if (letter==' ') throw new DomainException("Letter mag niet leeg zijn.");
         this.letter = java.lang.Character.toLowerCase(letter);
         isGeraden = false;
     }
@@ -31,5 +32,14 @@ public class HintLetter {
 
     public boolean isGeraden(){
         return isGeraden;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        HintLetter that = (HintLetter) o;
+        return (letter == that.letter);
     }
 }
