@@ -31,8 +31,9 @@ public class Actionevent {
     public static void raadWoordEvent(GridPane root, TextField raden, HintWoord woord, Speler speler, Label resultaatLabel, Label hintLabel, Alert foutenboodschap) {
         raden.setOnAction(eventIngaveLetter -> {
             try {
+                if (raden.getText().length()>1) throw new DomainException("Geef maximum één letter in");
+
                 char letter = raden.getText().toCharArray()[0];
-                //checken of letter leeg is of meer dan 1 is!!
 
                 root.getChildren().remove(resultaatLabel);
                 if (woord.raad(letter)) {
@@ -47,10 +48,15 @@ public class Actionevent {
                 root.add(hintLabel, 0, 1);
                 raden.clear();
 
-            } catch (DomainException | ArrayIndexOutOfBoundsException e) {
+            } catch (DomainException e) {
                 raden.clear();
                 foutenboodschap.setTitle("Warning");
                 foutenboodschap.setContentText(e.getMessage());
+                foutenboodschap.showAndWait();
+            } catch (ArrayIndexOutOfBoundsException e){
+                raden.clear();
+                foutenboodschap.setTitle("Warning");
+                foutenboodschap.setContentText("Geef minimum één letter in");
                 foutenboodschap.showAndWait();
             }
             if (!woord.isGeraden()) {
@@ -58,7 +64,7 @@ public class Actionevent {
             } else{
                 root.getChildren().clear();
                 Text uitvoer = new Text();
-                uitvoer.setText("Goed gedaan " + speler.getNaam() + "! Je hebt het woord geraden");
+                uitvoer.setText("Goed gedaan " + speler.getNaam() + "! Je hebt het woord geraden!");
                 root.add(uitvoer, 0, 0);
 
             }
