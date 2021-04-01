@@ -63,4 +63,15 @@ public class HintWoord {
         }
         return res.substring(1);
     }
+
+    /*public int aantalNogTeRadenLetters(){
+        int aantal = 0;
+        for (HintLetter l : hintwoord) {
+            if (!l.isGeraden()) {
+                aantal++;
+            }
+        }
+        return this
+    }*/
 }
+

@@ -32,7 +32,6 @@ public class Actionevent {
         raden.setOnAction(eventIngaveLetter -> {
             try {
                 char letter = raden.getText().toCharArray()[0];
-                //checken of letter leeg is of meer dan 1 is!!
 
                 root.getChildren().remove(resultaatLabel);
                 if (woord.raad(letter)) {

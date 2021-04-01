@@ -31,33 +31,5 @@ public class WoordRadenApp {
         root.add(resultaatLabel,0,7);
 
         Actionevent.raadWoordEvent(root,raden,woord,speler,resultaatLabel,hintLabel,foutenboodschap);
-
-        /*raden.setOnAction(eventIngaveLetter ->{
-            try{
-                char letter = raden.getText().toCharArray()[0];
-
-                if (woord.isGeraden()){
-                    root.getChildren().clear();
-                    Text uitvoer = new Text();
-                    uitvoer.setText("Goed gedaan "+speler.getNaam()+"! Je hebt het woord geraden");
-                    root.add(uitvoer, 0, 0);;
-                } else {
-                    if (woord.raad(letter)){
-                        resultaatLabel.setText("Super, doe zo voort!");
-                        root.add(resultaatLabel,0,7);
-                    } else {
-                        resultaatLabel.setText("Helaas volgende keer beter");
-                        root.add(resultaatLabel,0,7);
-                    }
-                    hintLabel.setText(woord.toString());
-                }
-            } catch (DomainException e){
-                raden.clear();
-                foutenboodschap.setTitle("Warning");
-                foutenboodschap.setContentText(e.getMessage());
-                foutenboodschap.showAndWait();
-            }
-        });*/
-
     }
 }
