@@ -23,7 +23,7 @@ public class FxHangManApp extends Application {
 
         VBox root = new VBox();
         Scene scene = new Scene(root,400,450);
-        TextField invoerNaam = new TextField("Geef de naam van de speler");
+        TextField invoerNaam = new TextField("Hey Lekkere meid! Wat is je naam?");
         root.getChildren().add(invoerNaam);
 
         primaryStage.setScene(scene);

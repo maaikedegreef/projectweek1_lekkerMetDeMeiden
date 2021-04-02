@@ -16,7 +16,7 @@ public class HangManApp {
     private HBox invoerBox = new HBox();
 
     private Text hintwoordUitvoer = new Text();
-    private Button raadButton = new Button("raad");
+    private Button raadButton = new Button("Lekker raden!!");
     private TextField invoerLetter = new TextField("Welke letter?");
     private HangMan hangman ;
 
@@ -32,6 +32,7 @@ public class HangManApp {
         hintwoordUitvoer.setText(this.hangman.getHint());
         hbox.setAlignment(Pos.BOTTOM_LEFT);
         hbox.getChildren().add(hintwoordUitvoer);
+        hbox.setSpacing(100);
         hbox.getChildren().add(raadButton);
         invoerBox.getChildren().add(invoerLetter);
         invoerBox.setDisable(true);
@@ -46,7 +47,7 @@ public class HangManApp {
                 raadButton.setDisable(true);
                 hbox.getChildren().clear();
                 invoerBox.getChildren().clear();
-                hintwoordUitvoer.setText("Goed gedaan " + speler.getNaam() + " je hebt het woord geraden in " + aantal + " stappen!!");
+                hintwoordUitvoer.setText("Lekker bezig meiden!! " + speler.getNaam() + "heeft het woord geraden in " + aantal + " stapjes!!");
                 hbox.getChildren().add(hintwoordUitvoer);
             }
             else if (hangman.isGameOver()){
